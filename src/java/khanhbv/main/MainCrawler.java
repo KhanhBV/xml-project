@@ -26,7 +26,7 @@ import khanhbv.utils.StringConstant;
 public class MainCrawler {
 
     public static void main(String[] args) {
-
+        Map<String, String> categoryMap;
 //        DienMayLinhBrandCrawler brandCrawler = new DienMayLinhBrandCrawler(null);
 //        brandCrawler.getCategories("https://dienmaylinh.vn/");
 //        DienMayLinhCategoriesCrawler categoriesCrawler = new DienMayLinhCategoriesCrawler(null);
@@ -41,19 +41,21 @@ public class MainCrawler {
 //        productCrawler.getProductLink();
 //        DMGRProductDetailCrawler detailCrawler = new DMGRProductDetailCrawler(null, "TIVI", "https://dienmaygiare.net/quat-dieu-hoa-daikiosan-dka-04000b/");
 //        detailCrawler.getProductDetail();
+//        DMRCategoryCrawler categoryCrawler = new DMRCategoryCrawler(null);
+//        categoryMap = categoryCrawler.getCategories("https://dienmayre.vn/");
+//        for (Map.Entry<String, String> entry : categoryMap.entrySet()) {
+//            System.out.println(entry.getKey() + "   "  +entry.getValue());
+//            DMRProductLinkByCategoryCrawler productCrawler = new DMRProductLinkByCategoryCrawler(null, entry.getKey(), entry.getValue());
+//            productCrawler.getProductLink();
+//        }
 
-//            DMRCategoryCrawler categoryCrawler = new DMRCategoryCrawler(null);
-//            categoryCrawler.getCategories("https://dienmayre.vn/");
-////
-        DMRProductLinkByCategoryCrawler productLinkCrawler = new DMRProductLinkByCategoryCrawler(null, "TIVI", "https://dienmayre.vn/dieu-hoa-nhiet-do.html");
-        productLinkCrawler.getProductLink();
-        
-//            DMRProductDetailCrawler detailCrawler = new DMRProductDetailCrawler(null, "TIVI", "https://dienmayre.vn/dieu-hoa-panasonic-inverter-18000btu-cu-cs-z18vkh-8.html");
+
+//            DMRProductDetailCrawler detailCrawler = new DMRProductDetailCrawler(null, "TIVI", "https://dienmayre.vn/smart-tivi-sharp-50-inch-2t-c50ae1x.html");
 //            detailCrawler.getProductDetail();
-
 //        String data = Helper.findPowerNumberInSring("Điện năng tiêu thụ: 23.750hp");
 //        System.out.println("data: " + data);
+//        float result = Helper.converPower("Công suất lạnh 25000BTU (2.5HP)", "25000");
+//        System.out.println("result: " + result);
     }
-    
-    
+
 }

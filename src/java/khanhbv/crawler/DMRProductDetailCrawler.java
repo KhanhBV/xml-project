@@ -83,15 +83,14 @@ public class DMRProductDetailCrawler extends BaseCrawler {
                     + "') or contains(text(),'"
                     + StringConstant.POWER_STRING_V6
                     + "') or contains(text(),'"
-                    + StringConstant.POWER_STRING_V14
-                    + "') or contains(text(),'"
-                    + StringConstant.POWER_STRING_V17
+                    + StringConstant.POWER_STRING_V7
+//                    + "') or contains(text(),'"
+//                    + StringConstant.POWER_STRING_V17
                     + "') or contains(text(),'"
                     + StringConstant.POWER_STRING_V18
                     + "') or contains(text(),'"
                     + StringConstant.POWER_STRING_V8
-                    + "') or contains(text(),'"
-                    + StringConstant.POWER_STRING_V14
+                    
                     + "')"
                     + "or contains(text(),'"
                     + StringConstant.POWER_STRING_V11

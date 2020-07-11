@@ -5,6 +5,8 @@
  */
 package khanhbv.utils;
 
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,9 +46,8 @@ public class Helper {
                 .replace(StringConstant.POWER_STRING_V11, "").replace(StringConstant.POWER_STRING_V12, "")
                 .replace(StringConstant.POWER_STRING_V13, "").replace(StringConstant.POWER_STRING_V14, "")
                 .replace(StringConstant.POWER_STRING_V15, "").replaceAll(",", "")
-                .replace(StringConstant.POWER_STRING_V16, "").replace(StringConstant.POWER_STRING_V17, "")
-                .replace(StringConstant.POWER_STRING_V18, "").replace(".", "")
-                ;
+                .replace(StringConstant.POWER_STRING_V16, "").replace(StringConstant.POWER_STRING_V16, "")
+                .replace(StringConstant.POWER_STRING_V18, "").replace(".", "");
 
         return powerStr.trim();
     }
@@ -59,12 +60,20 @@ public class Helper {
                 if (powerStr.toUpperCase().contains(StringConstant.POWER_UNIT_V3)) {
 
                     result = result / 24;
-                } else if (powerStr.toUpperCase().contains(StringConstant.POWER_UNIT_V10)) {
+                } else if (powerStr.toUpperCase().contains(StringConstant.POWER_UNIT_V4)
+                        && powerStr.toUpperCase().contains(StringConstant.POWER_UNIT_V5)) {
+                    result = (float) (result * 9000 * 0.293 / 1000);
+                } else if (powerStr.toUpperCase().contains(StringConstant.POWER_UNIT_V4)
+                        && !powerStr.toUpperCase().contains(StringConstant.POWER_UNIT_V5)) {
                     result = (float) (result * 0.293 / 1000);
-                } else if (powerStr.toUpperCase().contains(StringConstant.POWER_UNIT_V4)) {
+                } else if (powerStr.toUpperCase().contains(StringConstant.POWER_UNIT_V1)) {
 
                 } else if (powerStr.toUpperCase().contains(StringConstant.POWER_UNIT_V2)) {
                     result = result / 1000;
+                } else if (powerStr.toUpperCase().contains(StringConstant.POWER_UNIT_V6)) {
+                    result = (float) (result * 1.25);
+                }else {
+                    result = 0;
                 }
             }
 
@@ -122,7 +131,10 @@ public class Helper {
 //                    result = result / 1000;
 //                }
 //            }
-            
+//            NumberFormat numf = NumberFormat.getNumberInstance();
+//            numf.setMaximumFractionDigits(2);
+//            numf.setRoundingMode(RoundingMode.UP);
+//            String resultStr = numf.format(result);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -132,7 +144,9 @@ public class Helper {
 
     public static String findPowerNumberInSring(String powerString) {
         String data = "";
-        boolean check = powerString.toUpperCase().contains("HP") || powerString.toUpperCase().contains("KW");
+        boolean check = powerString.toUpperCase().contains(StringConstant.POWER_UNIT_V1) || 
+                powerString.toUpperCase().contains(StringConstant.POWER_UNIT_V5) || 
+                powerString.toUpperCase().contains(StringConstant.POWER_UNIT_V6);
         if (check) {
             Pattern p = powerString.contains(".") ? Pattern.compile("\\d*\\.\\d+") : Pattern.compile("\\d+");
             Matcher m = p.matcher(powerString.replace(",", ""));

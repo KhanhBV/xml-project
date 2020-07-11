@@ -11,10 +11,12 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import khanhbv.dto.ProductTestDTO;
+import khanhbv.utils.Helper;
 import khanhbv.utils.StringConstant;
 import khanhbv.utils.XMLHelper;
 import khanhbv.utils.XMLUtils;
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
 /**
  *
@@ -40,7 +42,7 @@ public class DMLProductDetailCrawler extends BaseCrawler {
             if (url != null) {
                 reader = getBufferedReaderForURL(url);
                 String document = XMLHelper.findHTMLToCrawl(reader, beginSyntax, endSyntax).replaceAll("&amp;nbsp;", "");
-//                XMLHelper.writeTestFileDocument(document);
+                XMLHelper.writeTestFileDocument(document);
                 domParserProductDetails(document);
             }
         } catch (Exception e) {
@@ -51,7 +53,7 @@ public class DMLProductDetailCrawler extends BaseCrawler {
 
     }
 
-    public String domParserProductDetails(String docString) throws XPathExpressionException {
+    public ProductTestDTO domParserProductDetails(String docString) throws XPathExpressionException {
         docString = docString.trim();
         Document doc = XMLUtils.convertStringToXMLDocument(docString);
 
@@ -65,110 +67,130 @@ public class DMLProductDetailCrawler extends BaseCrawler {
 //            System.out.println("Name " + name);
 
             exp = "//li[span[span[span[span[text()='"
-                    + StringConstant.DML_POWER_STRING_V1
+                    + StringConstant.POWER_STRING_V1
                     + "' or contains(text(),'"
-                    + StringConstant.DML_POWER_STRING_V2
+                    + StringConstant.POWER_STRING_V2
                     + "') or contains(text(),'"
-                    + StringConstant.DML_POWER_STRING_V3
+                    + StringConstant.POWER_STRING_V3
                     + "') or contains(text(),'"
-                    + StringConstant.DML_POWER_STRING_V4
+                    + StringConstant.POWER_STRING_V4
                     + "') or contains(text(),'"
-                    + StringConstant.DML_POWER_STRING_V5
+                    + StringConstant.POWER_STRING_V5
                     + "') or contains(text(),'"
-                    + StringConstant.DML_POWER_STRING_V6
+                    + StringConstant.POWER_STRING_V6
                     + "')]]]]]/span[last()]/span/span";
             String power = (String) xPath.evaluate(exp, doc, XPathConstants.STRING);
 
             if (power.isEmpty()) {
                 exp = "//tr[*//span[text()='"
-                        + StringConstant.DML_POWER_STRING_V1
+                        + StringConstant.POWER_STRING_V1
                         + "' or contains(text(),'"
-                        + StringConstant.DML_POWER_STRING_V2
+                        + StringConstant.POWER_STRING_V2
                         + "') or contains(text(),'"
-                        + StringConstant.DML_POWER_STRING_V3
+                        + StringConstant.POWER_STRING_V3
                         + "') or contains(text(),'"
-                        + StringConstant.DML_POWER_STRING_V4
+                        + StringConstant.POWER_STRING_V4
                         + "') or contains(text(),'"
-                        + StringConstant.DML_POWER_STRING_V5
+                        + StringConstant.POWER_STRING_V5
                         + "') or contains(text(),'"
-                        + StringConstant.DML_POWER_STRING_V6
+                        + StringConstant.POWER_STRING_V6
                         + "')]]/td[last()]//span[@style='background-color:#ffffff']";
                 power = (String) xPath.evaluate(exp, doc, XPathConstants.STRING);
 
                 if (power.isEmpty()) {
                     exp = "//tr[*//span[text()='"
-                            + StringConstant.DML_POWER_STRING_V1
+                            + StringConstant.POWER_STRING_V1
                             + "' or contains(text(),'"
-                            + StringConstant.DML_POWER_STRING_V2
+                            + StringConstant.POWER_STRING_V2
                             + "') or contains(text(),'"
-                            + StringConstant.DML_POWER_STRING_V3
+                            + StringConstant.POWER_STRING_V3
                             + "') or contains(text(),'"
-                            + StringConstant.DML_POWER_STRING_V4
+                            + StringConstant.POWER_STRING_V4
                             + "') or contains(text(),'"
-                            + StringConstant.DML_POWER_STRING_V5
+                            + StringConstant.POWER_STRING_V5
                             + "') or contains(text(),'"
-                            + StringConstant.DML_POWER_STRING_V6
+                            + StringConstant.POWER_STRING_V6
                             + "')]]//a";
                     power = (String) xPath.evaluate(exp, doc, XPathConstants.STRING);
 
                     if (power.isEmpty()) {
                         exp = "//div[@class='entry']//ul[not(@class)]//li[text()='"
-                                + StringConstant.DML_POWER_STRING_V1
+                                + StringConstant.POWER_STRING_V1
                                 + "' or contains(text(),'"
-                                + StringConstant.DML_POWER_STRING_V2
+                                + StringConstant.POWER_STRING_V2
                                 + "') or contains(text(),'"
-                                + StringConstant.DML_POWER_STRING_V3
+                                + StringConstant.POWER_STRING_V3
                                 + "') or contains(text(),'"
-                                + StringConstant.DML_POWER_STRING_V4
+                                + StringConstant.POWER_STRING_V4
                                 + "') or contains(text(),'"
-                                + StringConstant.DML_POWER_STRING_V5
+                                + StringConstant.POWER_STRING_V5
                                 + "') or contains(text(),'"
-                                + StringConstant.DML_POWER_STRING_V6
+                                + StringConstant.POWER_STRING_V6
                                 + "')]";
                         power = (String) xPath.evaluate(exp, doc, XPathConstants.STRING);
-                        power = power.replace(StringConstant.DML_POWER_STRING_V7, "");
+                        power = power.replace(StringConstant.POWER_STRING_V7, "");
                     }
 
                     if (power.isEmpty()) {
                         exp = "//table[thead//td[contains(text(),'"
                                 + StringConstant.DML_SPECIFICATIONS_STRING
                                 + "')]]//tr[td[text()='"
-                                + StringConstant.DML_POWER_STRING_V1
+                                + StringConstant.POWER_STRING_V1
                                 + "' or contains(text(),'"
-                                + StringConstant.DML_POWER_STRING_V2
+                                + StringConstant.POWER_STRING_V2
                                 + "') or contains(text(),'"
-                                + StringConstant.DML_POWER_STRING_V3
+                                + StringConstant.POWER_STRING_V3
                                 + "') or contains(text(),'"
-                                + StringConstant.DML_POWER_STRING_V4
+                                + StringConstant.POWER_STRING_V4
                                 + "') or contains(text(),'"
-                                + StringConstant.DML_POWER_STRING_V5
+                                + StringConstant.POWER_STRING_V5
                                 + "') or contains(text(),'"
-                                + StringConstant.DML_POWER_STRING_V6
+                                + StringConstant.POWER_STRING_V6
                                 + "')]]//td[last()]";
                         power = (String) xPath.evaluate(exp, doc, XPathConstants.STRING);
 
                         if (power.isEmpty()) {
                             exp = "//div[@class='box-short']/div[@class='entry']//li[not (strong) and (contains(text(),'"
-                                    + StringConstant.DML_POWER_STRING_V1
+                                    + StringConstant.POWER_STRING_V1
                                     + "') or contains(text(),'"
-                                    + StringConstant.DML_POWER_STRING_V2
+                                    + StringConstant.POWER_STRING_V2
                                     + "') or contains(text(),'"
-                                    + StringConstant.DML_POWER_STRING_V3
+                                    + StringConstant.POWER_STRING_V3
                                     + "') or contains(text(),'"
-                                    + StringConstant.DML_POWER_STRING_V4
+                                    + StringConstant.POWER_STRING_V4
                                     + "') or contains(text(),'"
-                                    + StringConstant.DML_POWER_STRING_V5
+                                    + StringConstant.POWER_STRING_V5
                                     + "') or contains(text(),'"
-                                    + StringConstant.DML_POWER_STRING_V6
+                                    + StringConstant.POWER_STRING_V6
                                     + "'))]";
                             power = (String) xPath.evaluate(exp, doc, XPathConstants.STRING);
-                            power = power.replaceAll(StringConstant.DML_POWER_STRING_V1, "");
+                            power = power.replaceAll(StringConstant.POWER_STRING_V1, "");
                         }
                     }
                 }
             }
+            if (!power.isEmpty()) {
+                power = Helper.formatPower(power);
+            }
+            
+            exp = "//div[@class='gallery']//a";
+            Node imageNode = (Node) xPath.evaluate(exp, doc, XPathConstants.NODE);
+            String img = "";
+            if (imageNode != null) {
+                img = imageNode.getAttributes().getNamedItem("href").getNodeValue();
+            }
+            System.out.println("name: " + name);
+            System.out.println("url:  " + img);
 
             System.out.println("Power: " + power);
+            System.out.println("----------------");
+            
+            dto.setCategoryID(category);
+            dto.setImageURL(img);
+            dto.setName(name);
+            dto.setLinkProduct(url);
+            dto.setPower(power);
+            return dto;
 
         }
 

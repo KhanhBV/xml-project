@@ -24,47 +24,24 @@ import org.w3c.dom.NodeList;
  *
  * @author vankhanhbui
  */
-public class DienMayLinhCategoriesCrawler extends BaseCrawler {
+public class DMGRCategoryCrawler extends BaseCrawler {
 
-    public DienMayLinhCategoriesCrawler(ServletContext context) {
+    private static String beginSyntax = "<div class=\"menu-danh-muc-san-pham-container\">";
+    private static String endSyntax = "<div class=\"col-md-9 no-padding main-navigation\">";
+
+    public DMGRCategoryCrawler(ServletContext context) {
         super(context);
     }
-
-    private static String beginSyntax = "<ul class=\"primary-menu\">";
-    private static String endSyntax = "<a href=\"https://dienmaylinh.vn/-do-dung-gia-dinh\" target=\"_self\">";
 
     public Map<String, String> getCategories(String url) {
         BufferedReader reader = null;
         try {
             if (url != null) {
                 reader = getBufferedReaderForURL(url);
-                String line = "";
-                String document = "<document>";
-                boolean isStart = false;
-
-                if (reader != null) {
-                    //get html fragment
-                    while ((line = reader.readLine()) != null) {
-                        if (line.contains(beginSyntax)) {
-                            isStart = true;
-                        }//end if begin Syntax
-
-                        if (isStart && line.contains(endSyntax)) {
-                            break;
-                        }
-                        if (isStart) {
-
-                            document = document + line.trim();
-
-                        }
-                    }//end while
-                    document = document + "</document>";
-                    XmlSyntaxChecker checker = new XmlSyntaxChecker();
-                    document = checker.check(document);
-
-//                    XMLHelper.writeTestFileDocument(document);
-                    return domParserForCategory(document);
-                }//end if reader
+                String document = XMLHelper.findHTMLToCrawl(reader, beginSyntax, endSyntax);
+                document = document.replaceAll(" &amp;#8211; làm mát", "");
+                XMLHelper.writeTestFileDocument(document);
+                return domParserForCategory(document);
             }//end if url
 
         } catch (Exception e) {
@@ -81,7 +58,7 @@ public class DienMayLinhCategoriesCrawler extends BaseCrawler {
 
         if (doc != null) {
             XPath xPath = XMLUtils.creatXPath();
-            String exp = "//a[span[@class='text']]";
+            String exp = "//div[@class='menu-danh-muc-san-pham-container']/ul/li/a";
 
             NodeList tagList = (NodeList) xPath.evaluate(exp, doc, XPathConstants.NODESET);
 
@@ -90,14 +67,9 @@ public class DienMayLinhCategoriesCrawler extends BaseCrawler {
                     Node tmp = tagList.item(i);
                     String categoryString = tmp.getLastChild().getTextContent().trim();
                     String urlString = tmp.getAttributes().getNamedItem("href").getNodeValue();
-                    
-                    if (!urlString.equals("") && !categoryString.equals("") 
-                            && (categoryString.equals(StringConstant.DML_FAN_STRING)
-                            || categoryString.equals(StringConstant.DML_TIVI_STRING)
-                            || categoryString.equals(StringConstant.DML_CONDITIONER_STRING))
-                            
-                            ) {
-                        System.out.println("category: " + categoryString);
+                    System.out.println(categoryString);
+                    System.out.println(urlString);
+                    if (!urlString.equals("") && !categoryString.equals("") && !categoryString.equals(StringConstant.FRIDGE_STRING)) {
                         categoryMap.put(categoryString.toUpperCase(), urlString);
                     }
 

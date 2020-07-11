@@ -15,7 +15,6 @@ import javax.xml.xpath.XPathExpressionException;
 import khanhbv.utils.StringConstant;
 import khanhbv.utils.XMLHelper;
 import khanhbv.utils.XMLUtils;
-import khanhbv.utils.XmlSyntaxChecker;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -24,16 +23,16 @@ import org.w3c.dom.NodeList;
  *
  * @author vankhanhbui
  */
-public class DienMayLinhProductLinkByCategoryCrawler extends BaseCrawler {
+public class DMGRProductLinkByCategoryCrawler extends BaseCrawler {
 
     private String url;
     private String category;
-    private static String beginSyntax = "<div id=\"ajax-search\">";
-    private static String endSyntax = "<div id=\"pvt-footer\" class=\"outer\">";
+    private static String beginSyntax = "<div class=\"sh-product-shortcode column-4\">";
+    private static String endSyntax = "<div class=\"term-description\">";
 
     private List<String> productLinkList;
 
-    public DienMayLinhProductLinkByCategoryCrawler(ServletContext context, String url, String category) {
+    public DMGRProductLinkByCategoryCrawler(ServletContext context, String url, String category) {
         super(context);
         this.url = url;
         this.category = category;
@@ -46,22 +45,23 @@ public class DienMayLinhProductLinkByCategoryCrawler extends BaseCrawler {
                 reader = getBufferedReaderForURL(url);
                 String document = XMLHelper.findHTMLToCrawl(reader, beginSyntax, endSyntax);
 //                XMLHelper.writeTestFileDocument(document);
-
                 int maxPage = getLastPage(document);
                 domParserProductLink(document);
+                
+                
                 for (int i = 2; i <= maxPage; i++) {
-                    String urlPaging = url + StringConstant.PAGE_SYNTAX_DML + i;
+                    String urlPaging = url + StringConstant.PAGE_SYNTAX_DMGR + i;
                     getProductLinkInPage(urlPaging);
                 }//end for maxPage
-
+         
                 for (int i = 0; i < productLinkList.size(); i++) {
                     getDetailProduct(productLinkList.get(i), category);
-                }//end for product Link
+                }
 
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }//end catch
+        }
     }
 
     public int getLastPage(String docString) throws XPathExpressionException {
@@ -69,21 +69,16 @@ public class DienMayLinhProductLinkByCategoryCrawler extends BaseCrawler {
         Document doc = XMLUtils.convertStringToXMLDocument(docString);
         int lastPage = 1;
         if (doc != null) {
-            String exp = "//div[@class='nav-page']//li[last()]//a";
+            String exp = "//ul[@class='page-numbers']//li[last()-1]";
             XPath xPath = XMLUtils.creatXPath();
             Node pagingNode = (Node) xPath.evaluate(exp, doc, XPathConstants.NODE);
+
             if (pagingNode != null) {
+                String maxPage = pagingNode.getTextContent();
+                lastPage = Integer.parseInt(maxPage.trim());
+//                System.out.println(lastPage);
+            }//end pagingNode
 
-                if (pagingNode != null) {
-                    String maxPageString = pagingNode.getAttributes().getNamedItem("data-ci-pagination-page").getNodeValue(); //get value last child
-                    System.out.println(maxPageString);
-                    if (!maxPageString.isEmpty()) {
-                        lastPage = Integer.parseInt(maxPageString);
-                        return lastPage;
-
-                    }//end if maxPageString
-                }//end pagingNode
-            }//end if pagingNode
         }//end if doc
 
         return lastPage;
@@ -112,7 +107,7 @@ public class DienMayLinhProductLinkByCategoryCrawler extends BaseCrawler {
         }
         if (doc != null) {
             XPath xPath = XMLUtils.creatXPath();
-            String exp = "//a[@itemprop='url']";
+            String exp = "//div[@class='image-product']/a";
             NodeList listLink = (NodeList) xPath.evaluate(exp, doc, XPathConstants.NODESET);
 
             if (listLink.getLength() > 0) {
@@ -128,7 +123,8 @@ public class DienMayLinhProductLinkByCategoryCrawler extends BaseCrawler {
     }
 
     public void getDetailProduct(String url, String category) {
-        DMLProductDetailCrawler detailCrawler = new DMLProductDetailCrawler(null, category, url);
+       DMGRProductDetailCrawler detailCrawler = new DMGRProductDetailCrawler(null, category, url);
         detailCrawler.getProductDetail();
     }
+
 }

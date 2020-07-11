@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/vankhanhbui/NetBeansProjects/ProjectXML/src/java/khanhbv/crawler/DMLProductDetailCrawler.java</file>
-            <file>file:/Users/vankhanhbui/NetBeansProjects/ProjectXML/src/java/khanhbv/main/MainCrawler.java</file>
-            <file>file:/Users/vankhanhbui/NetBeansProjects/ProjectXML/src/java/khanhbv/crawler/DienMayLinhProductLinkByCategoryCrawler.java</file>
+            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/crawler/DMRProductDetailCrawler.java</file>
+            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/utils/Helper.java</file>
+            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/main/MainCrawler.java</file>
+            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/utils/StringConstant.java</file>
         </group>
     </open-files>
 </project-private>

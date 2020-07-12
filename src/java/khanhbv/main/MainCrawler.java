@@ -31,13 +31,13 @@ public class MainCrawler {
 //        brandCrawler.getCategories("https://dienmaylinh.vn/");
 //        DienMayLinhCategoriesCrawler categoriesCrawler = new DienMayLinhCategoriesCrawler(null);
 //        categoriesCrawler.getCategories("https://dienmaylinh.vn/");
-//          DienMayLinhProductLinkByCategoryCrawler productLinkCrawler = new DienMayLinhProductLinkByCategoryCrawler(null, "https://dienmaylinh.vn/dien-gia-dung", "TIVI");
-//          productLinkCrawler.getProductLink();
+          DienMayLinhProductLinkByCategoryCrawler productLinkCrawler = new DienMayLinhProductLinkByCategoryCrawler(null, "https://dienmaylinh.vn/-tivi", "TIVI");
+          productLinkCrawler.getProductLink();
 //        DMLProductDetailCrawler detailCrawler = new DMLProductDetailCrawler(null, "TIVI", "https://dienmaylinh.vn/may-lanh-casper-1-5hp-ec-12tl22");
 //        detailCrawler.getProductDetail();
 //        DMGRCategoryCrawler categoryCrawler = new DMGRCategoryCrawler(null);
 //        categoryCrawler.getCategories("https://dienmaygiare.net/");
-//        DMGRProductLinkByCategoryCrawler productCrawler = new DMGRProductLinkByCategoryCrawler(null, "https://dienmaygiare.net/dieu-hoa/", "TIVI");
+//        DMGRProductLinkByCategoryCrawler productCrawler = new DMGRProductLinkByCategoryCrawler(null, "https://dienmaygiare.net/tivi/", "TIVI");
 //        productCrawler.getProductLink();
 //        DMGRProductDetailCrawler detailCrawler = new DMGRProductDetailCrawler(null, "TIVI", "https://dienmaygiare.net/quat-dieu-hoa-daikiosan-dka-04000b/");
 //        detailCrawler.getProductDetail();

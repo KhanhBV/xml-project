@@ -169,8 +169,14 @@ public class DMLProductDetailCrawler extends BaseCrawler {
                     }
                 }
             }
+             System.out.println(power);
             if (!power.isEmpty()) {
-                power = Helper.formatPower(power);
+                String powerBefortConvert = Helper.findPowerNumberInSring(power);
+                float powerResult = Helper.converPower(power, powerBefortConvert);
+                System.out.println(name);
+                
+                System.out.println(powerResult);
+                System.out.println(power);
             }
             
             exp = "//div[@class='gallery']//a";

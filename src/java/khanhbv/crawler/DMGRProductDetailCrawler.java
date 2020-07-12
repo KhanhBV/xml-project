@@ -97,17 +97,25 @@ public class DMGRProductDetailCrawler extends BaseCrawler {
                         + "')]";
                 powerStr = (String) xPath.evaluate(exp, doc, XPathConstants.STRING);
             }
-            int index = powerStr.indexOf(":");
+//            int index = powerStr.indexOf(":");
             
-            powerStr = Helper.formatPower(powerStr);
+//            powerStr = Helper.formatPower(powerStr);
 //            if (index != -1) {
 //                String subString = powerStr.substring(0, index + 1);
 //                powerStr = powerStr.replaceAll(subString, "").trim();
 //            }
             
 
-            System.out.println(name);
+            
             System.out.println(powerStr);
+            if (!powerStr.isEmpty()) {
+                String powerBefortConvert = Helper.findPowerNumberInSring(powerStr);
+                float power = Helper.converPower(powerStr, powerBefortConvert);
+                System.out.println(name);
+                
+                System.out.println(power);
+                System.out.println(powerStr);
+            }
 
             exp = "//div[@class='zoom']/img[last()]";
             Node imgNode = (Node) xPath.evaluate(exp, doc, XPathConstants.NODE);

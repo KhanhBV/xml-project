@@ -12,10 +12,13 @@ import java.io.Serializable;
  * @author vankhanhbui
  */
 public class ProductTestDTO implements Serializable{
+    
+    private String id;
     private String categoryID;
     private String name;
     private String power;
     private String imageURL;
+    private String brandID;
     private String linkProduct;
 
     public ProductTestDTO() {

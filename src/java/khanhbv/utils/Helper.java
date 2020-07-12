@@ -16,41 +16,41 @@ import java.util.regex.Pattern;
  */
 public class Helper {
 
-    public static String formatPower(String powerStr) {
+//    public static String formatPower(String powerStr) {
 //        if (powerStr.contains(StringConstant.POWER_STRING_V22)) {
 //            powerStr = powerStr.replace(StringConstant.POWER_STRING_V22, "");
 //            powerStr = powerStr + StringConstant.POWER_UNIT_V2;
 //        }
 
-        int index = powerStr.indexOf(":");
-        if (index != -1) {
-            if (index + 1 < powerStr.length()) {
-                String subString = powerStr.substring(0, index + 1);
-                powerStr = powerStr.replace(subString, "").trim();
-                int begin = powerStr.indexOf("(");
-                int end = powerStr.indexOf(")");
-                if (begin != -1 && end != -1) {
-                    subString = powerStr.substring(begin, end + 1);
-                    powerStr = powerStr.replace(subString, "");
-                }
+//        int index = powerStr.indexOf(":");
+//        if (index != -1) {
+//            if (index + 1 < powerStr.length()) {
+//                String subString = powerStr.substring(0, index + 1);
+//                powerStr = powerStr.replace(subString, "").trim();
+//                int begin = powerStr.indexOf("(");
+//                int end = powerStr.indexOf(")");
+//                if (begin != -1 && end != -1) {
+//                    subString = powerStr.substring(begin, end + 1);
+//                    powerStr = powerStr.replace(subString, "");
+//                }
+//
+//            }
+//
+//        }
+//
+//        powerStr = powerStr.replace(StringConstant.POWER_STRING_V1, "").replace(StringConstant.POWER_STRING_V2, "")
+//                .replace(StringConstant.POWER_STRING_V3, "").replace(StringConstant.POWER_STRING_V4, "")
+//                .replace(StringConstant.POWER_STRING_V5, "").replace(StringConstant.POWER_STRING_V6, "")
+//                .replace(StringConstant.POWER_STRING_V7, "").replace(StringConstant.POWER_STRING_V8, "")
+//                .replace(StringConstant.POWER_STRING_V9, "").replace(StringConstant.POWER_STRING_V10, "")
+//                .replace(StringConstant.POWER_STRING_V11, "").replace(StringConstant.POWER_STRING_V12, "")
+//                .replace(StringConstant.POWER_STRING_V13, "").replace(StringConstant.POWER_STRING_V14, "")
+//                .replace(StringConstant.POWER_STRING_V15, "").replaceAll(",", "")
+//                .replace(StringConstant.POWER_STRING_V16, "").replace(StringConstant.POWER_STRING_V16, "")
+//                .replace(StringConstant.POWER_STRING_V18, "").replace(".", "");
 
-            }
-
-        }
-
-        powerStr = powerStr.replace(StringConstant.POWER_STRING_V1, "").replace(StringConstant.POWER_STRING_V2, "")
-                .replace(StringConstant.POWER_STRING_V3, "").replace(StringConstant.POWER_STRING_V4, "")
-                .replace(StringConstant.POWER_STRING_V5, "").replace(StringConstant.POWER_STRING_V6, "")
-                .replace(StringConstant.POWER_STRING_V7, "").replace(StringConstant.POWER_STRING_V8, "")
-                .replace(StringConstant.POWER_STRING_V9, "").replace(StringConstant.POWER_STRING_V10, "")
-                .replace(StringConstant.POWER_STRING_V11, "").replace(StringConstant.POWER_STRING_V12, "")
-                .replace(StringConstant.POWER_STRING_V13, "").replace(StringConstant.POWER_STRING_V14, "")
-                .replace(StringConstant.POWER_STRING_V15, "").replaceAll(",", "")
-                .replace(StringConstant.POWER_STRING_V16, "").replace(StringConstant.POWER_STRING_V16, "")
-                .replace(StringConstant.POWER_STRING_V18, "").replace(".", "");
-
-        return powerStr.trim();
-    }
+//        return powerStr.trim();
+//    }
 
     public static float converPower(String powerStr, String powerBefortConver) {
         float result = 0;

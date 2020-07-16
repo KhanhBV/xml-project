@@ -39,7 +39,7 @@ public class DMRCategoryCrawler extends BaseCrawler {
                 reader = getBufferedReaderForURL(url);
                 String document = XMLHelper.findHTMLToCrawl(reader, beginSyntax, endSyntax);
 
-                XMLHelper.writeTestFileDocument(document);
+//                XMLHelper.writeTestFileDocument(document);
                 return domParserForCategory(document);
             }//end if url
 
@@ -71,8 +71,8 @@ public class DMRCategoryCrawler extends BaseCrawler {
                             && !categoryString.equals(StringConstant.DMR_AIR_PURIFIER_STRING)
                             && !categoryString.equalsIgnoreCase(StringConstant.DMR_GOOD_EXPERIENCE_STRING)) {
                         categoryMap.put(categoryString.toUpperCase(), StringConstant.DMR_URL_DOMAIN_NAME + urlString);
-                        System.out.println(categoryString);
-                        System.out.println(StringConstant.DMR_URL_DOMAIN_NAME + urlString);
+//                        System.out.println(categoryString);
+//                        System.out.println(StringConstant.DMR_URL_DOMAIN_NAME + urlString);
                     }
 
                 }//end for

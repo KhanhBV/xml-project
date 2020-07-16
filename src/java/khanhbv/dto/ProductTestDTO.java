@@ -71,6 +71,22 @@ public class ProductTestDTO implements Serializable{
     public void setLinkProduct(String linkProduct) {
         this.linkProduct = linkProduct;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getBrandID() {
+        return brandID;
+    }
+
+    public void setBrandID(String brandID) {
+        this.brandID = brandID;
+    }
     
     
 }

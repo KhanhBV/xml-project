@@ -4,9 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/crawler/DMRProductDetailCrawler.java</file>
-            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/utils/Helper.java</file>
+            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/main/DMRCrawlerService.java</file>
             <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/main/MainCrawler.java</file>
-            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/utils/StringConstant.java</file>
+            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/dlo/ProductBLO.java</file>
         </group>
     </open-files>
 </project-private>

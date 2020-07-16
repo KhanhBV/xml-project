@@ -26,13 +26,13 @@ import khanhbv.utils.StringConstant;
 public class MainCrawler {
 
     public static void main(String[] args) {
-        Map<String, String> categoryMap;
+//        Map<String, String> categoryMap;
 //        DienMayLinhBrandCrawler brandCrawler = new DienMayLinhBrandCrawler(null);
 //        brandCrawler.getCategories("https://dienmaylinh.vn/");
 //        DienMayLinhCategoriesCrawler categoriesCrawler = new DienMayLinhCategoriesCrawler(null);
 //        categoriesCrawler.getCategories("https://dienmaylinh.vn/");
-          DienMayLinhProductLinkByCategoryCrawler productLinkCrawler = new DienMayLinhProductLinkByCategoryCrawler(null, "https://dienmaylinh.vn/-tivi", "TIVI");
-          productLinkCrawler.getProductLink();
+//          DienMayLinhProductLinkByCategoryCrawler productLinkCrawler = new DienMayLinhProductLinkByCategoryCrawler(null, "https://dienmaylinh.vn/-tivi", "TIVI");
+//          productLinkCrawler.getProductLink();
 //        DMLProductDetailCrawler detailCrawler = new DMLProductDetailCrawler(null, "TIVI", "https://dienmaylinh.vn/may-lanh-casper-1-5hp-ec-12tl22");
 //        detailCrawler.getProductDetail();
 //        DMGRCategoryCrawler categoryCrawler = new DMGRCategoryCrawler(null);
@@ -49,13 +49,17 @@ public class MainCrawler {
 //            productCrawler.getProductLink();
 //        }
 
-
 //            DMRProductDetailCrawler detailCrawler = new DMRProductDetailCrawler(null, "TIVI", "https://dienmayre.vn/smart-tivi-sharp-50-inch-2t-c50ae1x.html");
 //            detailCrawler.getProductDetail();
 //        String data = Helper.findPowerNumberInSring("Điện năng tiêu thụ: 23.750hp");
 //        System.out.println("data: " + data);
 //        float result = Helper.converPower("Công suất lạnh 25000BTU (2.5HP)", "25000");
 //        System.out.println("result: " + result);
+//        CrawlerDMLService dmlService = new CrawlerDMLService();
+//        dmlService.crawlDML();
+        
+        DMRCrawlerService dmrService = new DMRCrawlerService();
+        dmrService.crawlDMR();
     }
 
 }

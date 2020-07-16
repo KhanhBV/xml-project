@@ -118,7 +118,7 @@ public class DienMayLinhBrandCrawler extends BaseCrawler {
             }
         }
 
-        return null;
+        return listBrand;
     }
 
 }

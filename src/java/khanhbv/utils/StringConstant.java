@@ -72,6 +72,13 @@ public class StringConstant {
     public static final String POWER_UNIT_V4 = "BTU";
     public static final String POWER_UNIT_V5 = "HP";
     public static final String POWER_UNIT_V6 = "KVA";
+    
+    //Brand
+    public static final String OTHER_BRAND = "KHÁC";
+    
+    //Update_STRING
+    public static final String UPDATE_STRING = "ĐANG CẬP NHẬT";
+    
 //    public static final String POWER_UNIT_V4 = "KW";
 //    public static final String POWER_UNIT_V5 = "Watts";
 //    public static final String POWER_UNIT_V6 = "Kw";

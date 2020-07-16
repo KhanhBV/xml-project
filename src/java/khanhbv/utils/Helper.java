@@ -7,8 +7,10 @@ package khanhbv.utils;
 
 import java.math.RoundingMode;
 import java.text.NumberFormat;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import khanhbv.dto.ProductTestDTO;
 
 /**
  *
@@ -162,5 +164,13 @@ public class Helper {
         }
 
         return data;
+    }
+    
+     public static void addListToList(List<ProductTestDTO> listFrom, List<ProductTestDTO> listTo){
+        if(listFrom != null && listTo != null){
+            for(int i = 0; i < listFrom.size(); i++){
+                listTo.add(listFrom.get(i));
+            }
+        }
     }
 }

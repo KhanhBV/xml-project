@@ -43,7 +43,7 @@ public class DMRProductDetailCrawler extends BaseCrawler {
                 reader = getBufferedReaderForURL(url);
                 String document = XMLHelper.findHTMLToCrawl(reader, beginSyntax, endSyntax);
 //                XMLHelper.writeTestFileDocument(document);
-                domParserProductDetails(document);
+                dto = domParserProductDetails(document);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -140,14 +140,14 @@ public class DMRProductDetailCrawler extends BaseCrawler {
                     }
                 }
             }
-            System.out.println(powerStr);
+//            System.out.println(powerStr);
             if (!powerStr.isEmpty()) {
-                String powerBefortConvert = Helper.findPowerNumberInSring(powerStr);
-                float power = Helper.converPower(powerStr, powerBefortConvert);
-                System.out.println(name);
+//                String powerBefortConvert = Helper.findPowerNumberInSring(powerStr);
+//                float power = Helper.converPower(powerStr, powerBefortConvert);
+//                System.out.println(name);
                 
-                System.out.println(power);
-                System.out.println(powerStr);
+//                System.out.println(power);
+//                System.out.println(powerStr);
             }
 
             exp = "//div/div/li[@class=\"images-sub col-lg-12 col-md-12 col-sm-12 col-xs-12\"]/a/img";
@@ -159,7 +159,7 @@ public class DMRProductDetailCrawler extends BaseCrawler {
             }
             System.out.println("----------------------------");
 
-            dto.setCategoryID(category.trim());
+            
             dto.setImageURL(imgUrl.trim());
             dto.setName(name.trim());
             dto.setLinkProduct(url);

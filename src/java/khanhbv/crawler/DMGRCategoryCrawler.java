@@ -40,7 +40,7 @@ public class DMGRCategoryCrawler extends BaseCrawler {
                 reader = getBufferedReaderForURL(url);
                 String document = XMLHelper.findHTMLToCrawl(reader, beginSyntax, endSyntax);
                 document = document.replaceAll(" &amp;#8211; làm mát", "");
-                XMLHelper.writeTestFileDocument(document);
+//                XMLHelper.writeTestFileDocument(document);
                 return domParserForCategory(document);
             }//end if url
 
@@ -66,11 +66,18 @@ public class DMGRCategoryCrawler extends BaseCrawler {
                 for (int i = 0; i < tagList.getLength(); i++) {
                     Node tmp = tagList.item(i);
                     String categoryString = tmp.getLastChild().getTextContent().trim();
+                    if (categoryString.equals(StringConstant.DMGR_TIVI_STRING)) {
+                        categoryString = "TIVI, LOA";
+                    }
+                    if (categoryString.equals(StringConstant.DMGR_CONDITIONER_STRING)) {
+                        categoryString = "ĐIỀU HÒA NHIỆT ĐỘ";
+                    }
                     String urlString = tmp.getAttributes().getNamedItem("href").getNodeValue();
-                    System.out.println(categoryString);
-                    System.out.println(urlString);
+
                     if (!urlString.equals("") && !categoryString.equals("") && !categoryString.equals(StringConstant.FRIDGE_STRING)) {
                         categoryMap.put(categoryString.toUpperCase(), urlString);
+                        System.out.println(categoryString);
+                        System.out.println(urlString);
                     }
 
                 }//end for

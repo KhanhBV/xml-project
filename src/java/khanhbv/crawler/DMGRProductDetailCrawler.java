@@ -44,7 +44,7 @@ public class DMGRProductDetailCrawler extends BaseCrawler {
                 reader = getBufferedReaderForURL(url);
                 String document = XMLHelper.findHTMLToCrawl(reader, beginSyntax, endSyntax);
 //                XMLHelper.writeTestFileDocument(document);
-                domParserProductDetails(document);
+                dto = domParserProductDetails(document);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -108,21 +108,21 @@ public class DMGRProductDetailCrawler extends BaseCrawler {
 
             
             System.out.println(powerStr);
-            if (!powerStr.isEmpty()) {
-                String powerBefortConvert = Helper.findPowerNumberInSring(powerStr);
-                float power = Helper.converPower(powerStr, powerBefortConvert);
-                System.out.println(name);
-                
-                System.out.println(power);
-                System.out.println(powerStr);
-            }
+//            if (!powerStr.isEmpty()) {
+//                String powerBefortConvert = Helper.findPowerNumberInSring(powerStr);
+//                float power = Helper.converPower(powerStr, powerBefortConvert);
+//                System.out.println(name);
+//                
+//                System.out.println(power);
+//                System.out.println(powerStr);
+//            }
 
             exp = "//div[@class='zoom']/img[last()]";
             Node imgNode = (Node) xPath.evaluate(exp, doc, XPathConstants.NODE);
             String imgUrl = "";
             if (imgNode != null) {
                 imgUrl = imgNode.getAttributes().getNamedItem("src").getNodeValue();
-                System.out.println(imgUrl.trim());
+//                System.out.println(imgUrl.trim());
             }
             System.out.println("----------------------------");
            

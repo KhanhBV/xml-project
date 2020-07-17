@@ -57,9 +57,10 @@ public class MainCrawler {
 //        System.out.println("result: " + result);
 //        CrawlerDMLService dmlService = new CrawlerDMLService();
 //        dmlService.crawlDML();
-        
-        DMRCrawlerService dmrService = new DMRCrawlerService();
-        dmrService.crawlDMR();
+//        DMRCrawlerService dmrService = new DMRCrawlerService();
+//        dmrService.crawlDMR();
+        CrawlerDMGRService dmgrService = new CrawlerDMGRService();
+        dmgrService.crawlDMGR();
     }
 
 }

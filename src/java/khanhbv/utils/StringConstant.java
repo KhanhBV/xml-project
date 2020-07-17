@@ -60,6 +60,14 @@ public class StringConstant {
     public static final String DML_CONDITIONER_STRING = "MÁY LẠNH";
     public static final String DML_TIVI_STRING = "TIVI";
     public static final String DML_FAN_STRING = "QUẠT ĐIỀU HOÀ";
+    
+    //DMGR category
+    public static final String DMGR_TIVI_STRING = "Tivi";
+    public static final String DMGR_CONDITIONER_STRING = "Điều hòa";
+    public static final String DMGR__MACHINE_STRING = "Máy giặt";
+    public static final String DMGR__CLOTHES_DRYER_STRING = "Máy sấy quần áo";
+    public static final String DMGR_FRIDGE_STRING = "Tủ lạnh";
+    public static final String DMGR_FAN_STRING = "Quạt điều hòa";
 
     //DMR category
     public static final String DMR_AIR_PURIFIER_STRING = "Máy lọc không khí";

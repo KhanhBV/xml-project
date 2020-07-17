@@ -38,7 +38,7 @@ public class DMGRProductLinkByCategoryCrawler extends BaseCrawler {
         this.category = category;
     }
 
-    public void getProductLink() {
+    public List<String> getProductLink() {
         BufferedReader reader = null;
         try {
             if (url != null) {
@@ -62,6 +62,7 @@ public class DMGRProductLinkByCategoryCrawler extends BaseCrawler {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return productLinkList;
     }
 
     public int getLastPage(String docString) throws XPathExpressionException {

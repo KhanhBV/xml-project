@@ -19,6 +19,7 @@ import khanhbv.entities.Brand;
 import khanhbv.entities.Category;
 import khanhbv.entities.Product;
 import khanhbv.utils.Helper;
+import khanhbv.utils.JAXBUtils;
 import khanhbv.utils.StringConstant;
 
 /**
@@ -33,7 +34,7 @@ public class CrawlerDMGRService {
     private BrandBLO brandBLO = new BrandBLO();
     private List<Category> categoryDB;
     private List<Brand> brandDB;
-    
+
     public void crawlDMGR() {
         crawlCategory();
     }
@@ -53,29 +54,29 @@ public class CrawlerDMGRService {
             categoryDB = categoryBLO.getAllCategory();
             for (Map.Entry<String, String> entry : categoryDMGRMap.entrySet()) {
                 System.out.println(entry.getKey() + "  " + entry.getValue());
-                
+
                 crawlProductByCategory(entry.getKey(), entry.getValue());
             }
         }
     }
-    
+
     public void crawlProductByCategory(String category, String urlCategory) {
-        DMGRProductLinkByCategoryCrawler crawlerLinkByCategoryCrawler = new DMGRProductLinkByCategoryCrawler(null, urlCategory,category);
+        DMGRProductLinkByCategoryCrawler crawlerLinkByCategoryCrawler = new DMGRProductLinkByCategoryCrawler(null, urlCategory, category);
         List<String> linkProductLinkDMGR = crawlerLinkByCategoryCrawler.getProductLink();
         listProductTemDMGR = new ArrayList<>();
         if (linkProductLinkDMGR != null) {
             System.out.println(category + linkProductLinkDMGR.size() + "San Pham: ");
             for (int i = 0; i < linkProductLinkDMGR.size(); i++) {
                 crawlProductDetailByLink(category, linkProductLinkDMGR.get(i));
-                
+
             }
         }
         if (listProductByCategory == null) {
             listProductByCategory = new ArrayList<>();
         }
-        
+
         Helper.addListToList(listProductTemDMGR, listProductByCategory);
-        
+
     }
 
     public void crawlProductDetailByLink(String categoryStr, String urlProduct) {
@@ -117,7 +118,10 @@ public class CrawlerDMGRService {
                     product.setPower(0);
                 }
             }
-            productBLO.insertProduct(product);
+            boolean validate = JAXBUtils.validateXml(StringConstant.FILE_PATH_PRODUCT_XSD, product);
+            if (validate) {
+                productBLO.insertProduct(product);
+            }
         }
     }
 
@@ -168,6 +172,5 @@ public class CrawlerDMGRService {
     public void setBrandDB(List<Brand> brandDB) {
         this.brandDB = brandDB;
     }
-    
-    
+
 }

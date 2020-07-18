@@ -104,30 +104,18 @@ public class ProductBLO {
         Product resultProdut = getProductByName(product.getName());
         try {
             if (resultProdut == null) {
-                if (product.getPower() > 0) {
-                    if (product.getImageURL() == null) {
-                        product.setImageURL(StringConstant.UPDATE_STRING);
-                    }
-                    if (product.getName() == null) {
-                        return;
-                    }
-                    em.getTransaction().begin();
-                    em.persist(product);
-                    em.getTransaction().commit();
-                }
-                else {
-                    return;
-                }
+                em.getTransaction().begin();
+                em.persist(product);
+                em.getTransaction().commit();
 
             } else {
 
-                if (product.getImageURL() == null) {
-                    product.setImageURL(StringConstant.UPDATE_STRING);
-                }
-                if (product.getName() == null) {
-                    return;
-                }
-
+//                if (product.getImageURL() == null) {
+//                    product.setImageURL(StringConstant.UPDATE_STRING);
+//                }
+//                if (product.getName() == null) {
+//                    return;
+//                }
                 resultProdut.setImageURL(product.getImageURL());
                 resultProdut.setCategoryID(product.getCategoryID());
                 resultProdut.setName(product.getName());
@@ -205,6 +193,38 @@ public class ProductBLO {
                 em.close();
             }
         }
+    }
+    
+    public List<ProductTestDTO> searchProductByCaAndBrand(String brandName, String categoryName, String nameProduct) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            String jdql = "SELECT p.id, p.name, b.name, p.imageURL, p.power, p.url, c.name "
+                    + "FROM ((Product p INNER JOIN Brand b ON p.brandID = b.id) INNER JOIN Category c ON p.categoryID = c.id) "
+                    + "WHERE b.name LIKE N'%" + brandName + "%' AND c.name LIKE N'%" + categoryName + "%' AND p.name LIKE N'%" + nameProduct + "%'";
+            System.out.println(jdql);
+            List<Object[]> result = em.createNativeQuery(jdql).getResultList();
+            List<ProductTestDTO> listProduct = new ArrayList<>();
+            for (Object[] rs : result) {
+                ProductTestDTO dto = new ProductTestDTO();
+                dto.setId(rs[0].toString());
+                dto.setName(rs[1].toString());
+                dto.setBrandID(rs[2].toString());
+                dto.setImageURL(rs[3].toString());
+                dto.setPower(rs[4].toString());
+                dto.setLinkProduct(rs[5].toString());
+                dto.setCategoryID(rs[6].toString());
+                
+                listProduct.add(dto);
+            }
+            return listProduct;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        return null;
     }
 
 }

@@ -1,0 +1,348 @@
+
+.container{
+    width: 60%;
+    height: auto;
+    border: 1px solid black;
+    margin-left: 20%;
+    text-align: center;
+}
+.container-addnew{
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    margin-left: 50px;
+    text-align: center;
+}
+.container-addpin{
+    width: 400px;
+    height: 500px;
+    margin-left: 50px;
+    text-align: center;
+}
+.container-inverter{
+    width: 90%;
+    height:500px;
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-left: 50px;
+    text-align: center;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.pagination{
+    text-align: center;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: gray;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+.box-search{
+    float: left;
+    position: relative;
+    margin-left: 50px;
+    width: 500px;
+    height: 50px;
+    border: 1px solid black;
+}
+.button-add-product{
+    float: left;
+    width: 150px;
+    height: 50px;
+    margin-left: 50px;
+    background-color: lightgray;
+    text-align: center;
+    color: black;
+    padding: 14px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.select-brand{
+    float: left;
+    background-color: lightgray;
+    margin-bottom: 10px;
+    font-size: 14px;
+    width: 70%;
+    height: 50px;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    color: black;
+    border-radius: 5px 5px 5px 5px;
+}
+.buttonsearch {
+    float: left;
+    width: 150px;
+    height: 50px;
+    background-color: lightgray;
+    color: black;
+    padding: 14px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.buttonadd {
+    float: left;
+    width: 100px;
+    height: 40px;
+    background-color: lightgray;
+    text-align: center;
+    color: black;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.button-add-new {
+    float: left;
+    width: 100px;
+    height: 40px;
+    margin-left: 180px;
+    background-color: lightgray;
+    text-align: center;
+    color: black;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.button-find-pin {
+    float: left;
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    background-color: lightgray;
+    text-align: center;
+    text-decoration-line: none;
+    color: black;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.button-add-pin {
+    float: left;
+    width: 100px;
+    height: 40px;
+    margin-left: 30%;
+    background-color: lightgray;
+    text-align: center;
+    text-decoration-line: none;
+    color: black;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.button-add-tocart {
+    float: left;
+    width: 100px;
+    height: 20px;
+    margin-left: 20px;
+    background-color: lightgray;
+    text-align: center;
+    text-decoration-line: none;
+    color: black;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.buttonremove {
+    float: left;
+    width: 100px;
+    height: 40px;
+    background-color: lightgray;
+    text-align: center;
+    color: black;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.buttonremov-pin {
+    float: left;
+    width: 100px;
+    height: 20px;
+    margin-left: 30%;
+    background-color: lightgray;
+    text-align: center;
+    text-decoration-line: none;
+    color: black;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.button-caculate {
+    float: left;
+    width: 200px;
+    height: 50px;
+    margin-left: 200px;
+    background-color: lightgray;
+    text-decoration-line: none;
+    color: black;
+    padding: 14px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.button-find {
+    float: left;
+    width: 100px;
+    height: 20px;
+    text-align: center;
+    margin-left: 90px;
+    background-color: lightgray;
+    text-decoration-line: none;
+    color: black;
+    padding: 12px 14px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.button-view-cart {
+    float: left;
+    width: 100px;
+    height: 20px;
+    text-align: center;
+    background-color: lightgray;
+    text-decoration-line: none;
+    color: black;
+    padding: 12px 14px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.container-pin{
+    width:90%;
+    height: auto;
+    border: 1px solid black;
+    margin-left: 5%;
+    text-align: center;
+}
+.column {
+    float: left;
+    width: 23%;
+    padding: 10px;
+    height: 420px;
+    border: 1px solid lightgray;
+}
+.column-invert {
+    float: left;
+    width: 80%;
+    margin-left: 30px;
+    padding: 10px;
+    height: 480px;
+    border: 1px solid lightgray;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.row {margin: 0px -5px;}
+.card {
+    height: 350px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    text-align: center;
+    background-color: #f1f1f1;
+    border-radius: 3px 3px 3px 3px;
+}
+.card-pin{
+    height: 350px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    text-align: center;
+    background-color: #f1f1f1;
+    border-radius: 3px 3px 3px 3px;
+}
+.card-pin-add{
+    height: 450px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    text-align: center;
+    background-color: #f1f1f1;
+    border-radius: 3px 3px 3px 3px;
+}
+.card-invert{
+    height: 350px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    text-align: center;
+    background-color: #f1f1f1;
+    border-radius: 3px 3px 3px 3px;
+}
+td > a:link, a:visited {
+    background-color: lightgray;
+    color: black;
+    padding: 12px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px 5px 5px 5px;
+}
+/* Full-width input fields */
+input[type=text] {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+.container-addnew select{
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+label{
+    margin-left: 0px;
+}
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+.addnewbtn {
+    background-color: lightgray;
+    color: black;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 90%;
+    opacity: 0.9;
+}
+
+.addnewbtn:hover {
+    opacity: 1;
+}

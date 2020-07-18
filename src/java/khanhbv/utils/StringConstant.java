@@ -84,15 +84,10 @@ public class StringConstant {
     //Brand
     public static final String OTHER_BRAND = "KHÁC";
     
-    //Update_STRING
-    public static final String UPDATE_STRING = "ĐANG CẬP NHẬT";
     
-//    public static final String POWER_UNIT_V4 = "KW";
-//    public static final String POWER_UNIT_V5 = "Watts";
-//    public static final String POWER_UNIT_V6 = "Kw";
-//    public static final String POWER_UNIT_V7 = "w";
-//    public static final String POWER_UNIT_V8 = "Btu/h";
-//    public static final String POWER_UNIT_V9 = "BTU/h";
+    public static final String FILE_PATH_PRODUCT_XSD = "web/WEB-INF/product.xsd";
+    
+    
+    
 
-//    public static final String POWER_UNIT_V11 = "KW\\H";
 }

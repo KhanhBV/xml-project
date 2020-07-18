@@ -21,6 +21,7 @@ import khanhbv.entities.Brand;
 import khanhbv.entities.Category;
 import khanhbv.entities.Product;
 import khanhbv.utils.Helper;
+import khanhbv.utils.JAXBUtils;
 import khanhbv.utils.StringConstant;
 
 /**
@@ -116,7 +117,11 @@ public class DMRCrawlerService {
                     product.setPower(0);
                 }
             }
-            productBLO.insertProduct(product);
+            boolean validate = JAXBUtils.validateXml(StringConstant.FILE_PATH_PRODUCT_XSD, product);
+            if (validate) {
+                 productBLO.insertProduct(product);
+            }
+           
 
         }
     }

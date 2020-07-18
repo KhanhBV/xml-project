@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    
+    <xs:element name="product">
+        <xs:complexType>
+            <xs:all>
+                <xs:element type="NonNullString" name="name" />
+                <xs:element type="NonNullString" name="imageURL" />
+                <xs:element type="NonNullString" name="url" />
+                <xs:element type="powerType" name="power"/>
+
+                <xs:element name="brandID">
+                    <xs:complexType>
+                        <xs:all>
+                            <xs:element name="id" type="xs:int" />
+                            <xs:element name="name" type="xs:string" />
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="categoryID">
+                    <xs:complexType>
+                        <xs:all>
+                            <xs:element name="id" type="xs:int" />
+                            <xs:element name="name" type="xs:string" />
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="NonNullString">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="powerType">
+        <xs:restriction base="xs:float">
+            <xs:minExclusive  value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

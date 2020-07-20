@@ -129,7 +129,7 @@ public class DMGRProductDetailCrawler extends BaseCrawler {
             dto.setCategoryID(category.trim());
             dto.setImageURL(imgUrl.trim());
             dto.setName(name.trim());
-            dto.setLinkProduct(url);
+            dto.setUrl(url);
             dto.setPower(powerStr);
 
             return dto;

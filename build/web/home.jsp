@@ -51,7 +51,7 @@
                     <th>STT</th>
                     <th>Tên sản phẩm</th>
                     <th>Công suất (kW)</th>
-                    <th>Action</th>
+                    <th>Thao tác</th>
                     </thead>
                     <tbody>
                         <c:forEach var="dto" items="${result}" varStatus="counter">
@@ -68,9 +68,11 @@
                                         <c:param name="btAction" value="Add"/>
                                         <c:param name="idProduct" value="${dto.id}"/>
                                         <c:param name="nameCategory" value="${param.nameCategory}"/>
-                                        <c:param name="pageNumber" value="${requestScope.PAGENUMBER}"/>
+                                        <c:param name="nameBrand" value="${param.nameBrand}"/>
+                                        <c:param name="txtNameSearch" value="${param.txtNameSearch}"/>
+                                      <%--    <c:param name="pageNumber" value="${requestScope.PAGENUMBER}"/>--%>
                                     </c:url>
-                                    <a href="${URLAdd}"> Add </a>
+                                    <a href="${URLAdd}">Thêm</a>
                                 </td>
                             </tr>
                             <tr>
@@ -87,9 +89,9 @@
 
             <br/>
 
-            <%--           <div class="pagination">
-                         <c:set var="url" value="${sessionScope.QUERYSTRING}"/>
-                         <c:if test="${not empty result}">
+            <div class="pagination">
+                <c:set var="url" value="${sessionScope.QUERYSTRING}"/>
+                <c:if test="${not empty result}">
 
                     <c:forEach var="i" begin="1" end="${requestScope.MAXPAGE}">
 
@@ -103,35 +105,35 @@
                     </c:forEach>
 
                 </c:if>
-            </div>--%>
+            </div>
         </div>
         <br/>
         <br/>
         <br/>
         <br/>
-        <%--    <div class="container">
-              <c:set var="list" value="${sessionScope.CART}"/>
-              <c:if test="${not empty list}">
-                  <form action="DispatcherServlet">
-                      <table>
-                          <thead>
-                          <th>STT</th>
-                          <th>Electric Product Name</th>
-                          <th>Electric Product Capacity (W)</th>
-                          <th>Quantity</th>
-                          <th>Using Time( Hour / Day)</th>
-                          <th>Action</th>
-                          </thead>
-                          <tbody>
-                              <c:forEach var="dto" items="${list.items}" varStatus="counter">
+        <div class="container">
+            <c:set var="list" value="${sessionScope.CART}"/>
+            <c:if test="${not empty list}">
+                <form action="DispatcherServlet">
+                    <table>
+                        <thead>
+                        <th>STT</th>
+                        <th>Electric Product Name</th>
+                        <th>Electric Product Capacity (W)</th>
+                        <th>Quantity</th>
+                        <th>Using Time( Hour / Day)</th>
+                        <th>Action</th>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="dto" items="${list.items}" varStatus="counter">
 
                                 <tr>
                                     <td>${counter.count}</td>
-                                    <td>${dto.value.productName}
-                                        <input type="hidden" name="idProduct" value="${dto.value.idProduct}"/>
+                                    <td>${dto.value.name}
+                                        <input type="hidden" name="idProduct" value="${dto.value.id}"/>
                                     </td>
-                                    <td>${dto.value.productCapacity}
-                                        <input type="hidden" name="capacityProduct" value="${dto.value.productCapacity}">
+                                    <td>${dto.value.power}
+                                        <input type="hidden" name="capacityProduct" value="${dto.value.power}">
                                     </td>
                                     <td>
                                         <input type="text" name="txtQuantity" value="">
@@ -177,7 +179,7 @@
                 </form>
                 <br/>
             </c:if>
-      </div> --%>
+        </div>
 
     </body>
 </html>

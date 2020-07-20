@@ -8,7 +8,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import khanhbv.entities.HistoryProduct;
 import khanhbv.entities.User;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-07-19T01:27:53")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-07-20T00:33:30")
 @StaticMetamodel(History.class)
 public class History_ { 
 

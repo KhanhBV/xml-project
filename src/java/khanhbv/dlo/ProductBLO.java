@@ -195,6 +195,26 @@ public class ProductBLO {
         }
     }
     
+    public Product getProductByID(int id) {
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            String jpql = "SELECT p FROM Product p WHERE p.id = :id";
+            Query query = em.createQuery(jpql);
+            query.setParameter("id", id);
+            Product product = (Product) query.getSingleResult();
+            return product;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+    
     public List<ProductTestDTO> searchProductByCaAndBrand(String brandName, String categoryName, String nameProduct) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -211,7 +231,7 @@ public class ProductBLO {
                 dto.setBrandID(rs[2].toString());
                 dto.setImageURL(rs[3].toString());
                 dto.setPower(rs[4].toString());
-                dto.setLinkProduct(rs[5].toString());
+                dto.setUrl(rs[5].toString());
                 dto.setCategoryID(rs[6].toString());
                 
                 listProduct.add(dto);

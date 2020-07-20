@@ -194,7 +194,7 @@ public class DMLProductDetailCrawler extends BaseCrawler {
             dto.setCategoryID(category);
             dto.setImageURL(img);
             dto.setName(name);
-            dto.setLinkProduct(url);
+            dto.setUrl(url);
             dto.setPower(power);
             return dto;
 

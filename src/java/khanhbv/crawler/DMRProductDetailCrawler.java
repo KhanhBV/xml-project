@@ -154,7 +154,7 @@ public class DMRProductDetailCrawler extends BaseCrawler {
             
             dto.setImageURL(imgUrl.trim());
             dto.setName(name.trim());
-            dto.setLinkProduct(url);
+            dto.setUrl(url);
             dto.setPower(powerStr);
 
             return dto;

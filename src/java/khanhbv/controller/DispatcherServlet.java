@@ -20,6 +20,8 @@ public class DispatcherServlet extends HttpServlet {
 
     private static final String HOME_PRODUCT_SERVLET = "HomeProductServlet";
     private static final String SEARCH__SERVLET = "SearchServlet";
+    private static final String CHARGE_ELECTRICITY__SERVLET = "ChargeElectricityServlet";
+    private static final String CACULATE = "CaculateMoneyServlet";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -31,6 +33,10 @@ public class DispatcherServlet extends HttpServlet {
 
             } else if (action.equals("Search")) {
                 url = SEARCH__SERVLET;
+            } else if (action.equals("Add")) {
+                url = CHARGE_ELECTRICITY__SERVLET;
+            }else if(action.equals("Caculate Electric Money")){
+                url = CACULATE;
             }
 
         } catch (Exception e) {

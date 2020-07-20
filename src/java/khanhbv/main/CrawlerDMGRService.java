@@ -98,7 +98,7 @@ public class CrawlerDMGRService {
                 product.setImageURL(dto.getImageURL());
                 System.out.println("img: " + dto.getImageURL());
             }
-            if (dto.getLinkProduct() != null) {
+            if (dto.getUrl()!= null) {
                 product.setUrl(urlProduct);
             }
             if (dto.getName() != null) {

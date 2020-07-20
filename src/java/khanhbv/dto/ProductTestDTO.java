@@ -19,18 +19,22 @@ public class ProductTestDTO implements Serializable{
     private String power;
     private String imageURL;
     private String brandID;
-    private String linkProduct;
+    private String url;
 
     public ProductTestDTO() {
     }
 
-    public ProductTestDTO(String categoryID, String name, String power, String imageURL, String linkProduct) {
+    public ProductTestDTO(String id, String categoryID, String name, String power, String imageURL, String brandID, String url) {
+        this.id = id;
         this.categoryID = categoryID;
         this.name = name;
         this.power = power;
         this.imageURL = imageURL;
-        this.linkProduct = linkProduct;
+        this.brandID = brandID;
+        this.url = url;
     }
+
+    
 
     public String getCategoryID() {
         return categoryID;
@@ -64,13 +68,14 @@ public class ProductTestDTO implements Serializable{
         this.imageURL = imageURL;
     }
 
-    public String getLinkProduct() {
-        return linkProduct;
+    public String getUrl() {
+        return url;
     }
 
-    public void setLinkProduct(String linkProduct) {
-        this.linkProduct = linkProduct;
+    public void setUrl(String url) {
+        this.url = url;
     }
+
 
     public String getId() {
         return id;

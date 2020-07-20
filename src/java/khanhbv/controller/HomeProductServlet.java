@@ -47,16 +47,51 @@ public class HomeProductServlet extends HttpServlet {
             listCategorys = categoryBLO.getAllCategory();
             listproProducts = productBLO.getAllProduct();
             listBrand = brandBLO.getAllBrand();
-            
+            HttpSession session = request.getSession();
             if (listCategorys != null & listproProducts != null) {
-                HttpSession session = request.getSession();
+                
 
-                session.setAttribute("LISTALLPRODUCT", listproProducts);
+                
                 session.setAttribute("LISTCATEGORY", listCategorys);
                 session.setAttribute("LISTBRAND", listBrand);
                 
                 url = HOME_PAGE;
             }
+            //get link when you click to page
+            session.setAttribute("QUERYSTRING", "DispatcherServlet?&btAction=Home");
+            
+            String pageNum = request.getParameter("pageNumber");
+            int pageNumber = 1;
+            if (pageNum != null) {
+                pageNumber = Integer.parseInt(pageNum);
+            }
+            
+            // divide 20 product per one page
+            int numberItems = listproProducts.size();
+            int maxPage = numberItems / 20;
+            if (numberItems % 20 != 0) {
+                maxPage = maxPage + 1;
+            }
+            List<Product> resultPage = new ArrayList<>();
+            // add product to one page
+            if (listproProducts != null) {
+                int fromPage = (pageNumber * 20) - 20;
+                int endPage = fromPage + 20;
+                if (endPage < listproProducts.size()) {
+                    for (int i = fromPage; i < endPage; i++) {
+                        resultPage.add(listproProducts.get(i));
+                    }
+                } else {
+                    for (int j = fromPage; j < listproProducts.size(); j++) {
+                        resultPage.add(listproProducts.get(j));
+                    }
+                }
+            }
+            
+            session.setAttribute("LISTALLPRODUCT", resultPage);
+            request.setAttribute("MAXPAGE", maxPage);
+            request.setAttribute("PAGENUMBER", pageNumber);
+
 
         } catch (Exception e) {
             e.printStackTrace();

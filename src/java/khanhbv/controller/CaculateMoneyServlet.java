@@ -7,58 +7,77 @@ package khanhbv.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import khanhbv.dlo.ProductBLO;
-import khanhbv.dto.ProductTestDTO;
+import khanhbv.dto.ProductCart;
 import khanhbv.entities.Product;
 
 /**
  *
  * @author vankhanhbui
  */
-@WebServlet(name = "SearchServlet", urlPatterns = {"/SearchServlet"})
-public class SearchServlet extends HttpServlet {
+@WebServlet(name = "CaculateMoneyServlet", urlPatterns = {"/CaculateMoneyServlet"})
+public class CaculateMoneyServlet extends HttpServlet {
 
-    private final String ERROR_PAGE = "error.html";
-    private final String HOME_PAGE = "home.jsp";
+    private static final String HOME_PAGE = "home.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR_PAGE;
+
+        String url = HOME_PAGE;
         try {
-            String txtNameSearch = request.getParameter("txtNameSearch");
-            String nameCategory = request.getParameter("nameCategory");
-            
-            String nameBrand = request.getParameter("nameBrand");
             HttpSession session = request.getSession();
-
-            ProductBLO productBLO = new ProductBLO();
-            List<Product> listProductEntity;
-            List<ProductTestDTO> listProductDTO;
-            url = HOME_PAGE;
-            if (txtNameSearch.isEmpty() && nameCategory.equals("0") && nameBrand.equals("0")) {
-                listProductEntity = productBLO.getAllProduct();
-                session.setAttribute("LISTALLPRODUCT", listProductEntity);
-            } else {
-                if (nameBrand.equals("0")) {
-                    nameBrand = "";
-                }
-                if (nameCategory.equals("0")) {
-                    nameCategory = "";
-                }
-                listProductDTO = productBLO.searchProductByCaAndBrand(nameBrand, nameCategory, txtNameSearch);
-                session.setAttribute("LISTALLPRODUCT", listProductDTO);
+            ProductCart cart = (ProductCart) session.getAttribute("CART");
+            if (cart == null) {
+                cart = new ProductCart();
             }
-            
-            
+            String[] strQuantity = request.getParameterValues("txtQuantity");
+            String[] strHour = request.getParameterValues("txtTime");
 
+            String idProduct = request.getParameter("idProduct");
+            int id = Integer.parseInt(idProduct);
+
+            float totalMoney = 0;
+            float usePower = 0;
+            float totalPower = 0;
+            int quantity = 0;
+            float time = 0;
+            String strCapacity = "";
+            String strTotalMoney = "";
+            if (cart != null) {
+                Map<Integer, Product> items = cart.getItems();
+                if (items != null) {
+                    float totalPowerOneDay = 0;
+                    int count = 0;
+                    for (Map.Entry<Integer, Product> entry : items.entrySet()) {
+
+                        String quan = strQuantity[count];
+                        quantity = Integer.parseInt(quan);
+                        String hour = strHour[count];
+                        time = Float.parseFloat(hour);
+
+                        Product value = entry.getValue();
+                        usePower = (float) (value.getPower() * quantity * time);
+
+                        totalPowerOneDay = totalPowerOneDay + usePower;
+                        System.out.println("total power day:" + totalPowerOneDay);
+                        count++;
+                    }
+                    totalPower = (float) (totalPowerOneDay * 30);
+                    totalMoney = (int) cart.caculateElectric(totalPower);
+                    strTotalMoney = String.format("%.2f", totalMoney);
+                    strCapacity = String.format("%.2f", totalPower);
+                }
+            }
+
+            session.setAttribute("CAPA", strCapacity);
+            session.setAttribute("MONEY", strTotalMoney);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

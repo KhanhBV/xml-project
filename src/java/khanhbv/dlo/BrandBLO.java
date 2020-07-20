@@ -89,6 +89,25 @@ public class BrandBLO implements Serializable {
         }
 
     }
+    public Brand getBrandByID(int id) {
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            String jpql = "SELECT b FROM Brand b WHERE b.id = :id";
+            Query query = em.createQuery(jpql);
+            query.setParameter("id", id);
+            Brand brand = (Brand) query.getSingleResult();
+            return brand;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
 
     public Brand getBrandByName(String nameBrand) {
         EntityManager em = emf.createEntityManager();

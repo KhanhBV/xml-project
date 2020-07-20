@@ -49,9 +49,9 @@
                 <table>
                     <thead>
                     <th>STT</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Công suất (kW)</th>
-                    <th>Thao tác</th>
+                    <th>Product Name</th>
+                    <th>Power (kW)</th>
+                    <th>Action</th>
                     </thead>
                     <tbody>
                         <c:forEach var="dto" items="${result}" varStatus="counter">
@@ -72,7 +72,7 @@
                                         <c:param name="txtNameSearch" value="${param.txtNameSearch}"/>
                                       <%--    <c:param name="pageNumber" value="${requestScope.PAGENUMBER}"/>--%>
                                     </c:url>
-                                    <a href="${URLAdd}">Thêm</a>
+                                    <a href="${URLAdd}">Add</a>
                                 </td>
                             </tr>
                             <tr>
@@ -119,7 +119,7 @@
                         <thead>
                         <th>STT</th>
                         <th>Electric Product Name</th>
-                        <th>Electric Product Capacity (W)</th>
+                        <th>Electric Product Power (kW)</th>
                         <th>Quantity</th>
                         <th>Using Time( Hour / Day)</th>
                         <th>Action</th>
@@ -136,10 +136,10 @@
                                         <input type="hidden" name="capacityProduct" value="${dto.value.power}">
                                     </td>
                                     <td>
-                                        <input type="text" name="txtQuantity" value="">
+                                        <input type="text" name="txtQuantity" value="" required>
                                     </td>
                                     <td>
-                                        <input type="text" name="txtTime" value="">
+                                        <input type="text" name="txtTime" value="" required>
                                     </td>
                                     <td>
                                         <c:url value="DispatcherServlet" var="localURL">
@@ -159,14 +159,9 @@
                     <input type="Submit" class="button-caculate" value="Caculate Electric Money" name="btAction">
 
                     <c:if test="${not empty capa}">
-                        <c:url value="DispatcherServlet" var="URLfind">
-                            <c:param name="btAction" value="Find Pin Solar"/>
-                            <c:param name="money" value="${sessionScope.MONEY}"/>
-                        </c:url>
-                        <a href="${URLfind}" class="button-find-pin">Find Pin Solar</a>
-                        <br/>
-                        <br/>
-                        <h3>Used Capacity 1 month: ${capa} W</h3>
+                        <br>
+                        <br>
+                        <h3>Used Power 1 month: ${capa} kW</h3>
                         <input type="hidden" name="totalCapacity" value="${capa}">
                     </c:if>
                     <c:if test="${not empty money}">

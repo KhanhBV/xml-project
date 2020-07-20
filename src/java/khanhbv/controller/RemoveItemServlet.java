@@ -7,7 +7,6 @@ package khanhbv.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,21 +14,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import khanhbv.dto.ProductCart;
-import khanhbv.entities.Product;
 
 /**
  *
  * @author vankhanhbui
  */
-@WebServlet(name = "CaculateMoneyServlet", urlPatterns = {"/CaculateMoneyServlet"})
-public class CaculateMoneyServlet extends HttpServlet {
+@WebServlet(name = "RemoveItemServlet", urlPatterns = {"/RemoveItemServlet"})
+public class RemoveItemServlet extends HttpServlet {
 
     private static final String HOME_PAGE = "home.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
         String url = HOME_PAGE;
         try {
             HttpSession session = request.getSession();
@@ -37,50 +35,15 @@ public class CaculateMoneyServlet extends HttpServlet {
             if (cart == null) {
                 cart = new ProductCart();
             }
-            String[] strQuantity = request.getParameterValues("txtQuantity");
-            String[] strHour = request.getParameterValues("txtTime");
-
-            String idProduct = request.getParameter("idProduct");
-
-            float totalMoney = 0;
-            float usePower = 0;
-            float totalPower = 0;
-            int quantity = 0;
-            float time = 0;
-            String strCapacity = "";
-            String strTotalMoney = "";
             if (cart != null) {
-                Map<Integer, Product> items = cart.getItems();
-
-                if (items.size() != 0) {
-                    int id = Integer.parseInt(idProduct);
-                    float totalPowerOneDay = 0;
-                    int count = 0;
-                    for (Map.Entry<Integer, Product> entry : items.entrySet()) {
-
-                        String quan = strQuantity[count];
-                        
-                        quantity = Integer.parseInt(quan);
-
-                        String hour = strHour[count];
-                        
-                        time = Float.parseFloat(hour);
-
-                        Product value = entry.getValue();
-                        usePower = (float) (value.getPower() * quantity * time);
-
-                        totalPowerOneDay = totalPowerOneDay + usePower;
-                        count++;
-                    }
-                    totalPower = (float) (totalPowerOneDay * 30);
-                    totalMoney = (int) cart.caculateElectric(totalPower);
-                    strTotalMoney = String.format("%.2f", totalMoney);
-                    strCapacity = String.format("%.2f", totalPower);
+                String id = request.getParameter("idProduct");
+                if (id != null) {
+                    int idProduct = Integer.parseInt(id);
+                    cart.removeItem(idProduct);
                 }
-                session.setAttribute("CAPA", strCapacity);
-                session.setAttribute("MONEY", strTotalMoney);
+                session.setAttribute("CART", cart);
             }
-
+            
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

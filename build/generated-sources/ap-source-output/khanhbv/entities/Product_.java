@@ -8,7 +8,7 @@ import khanhbv.entities.Brand;
 import khanhbv.entities.Category;
 import khanhbv.entities.HistoryProduct;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-07-20T00:33:30")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-07-20T21:36:17")
 @StaticMetamodel(Product.class)
 public class Product_ { 
 

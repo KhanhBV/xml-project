@@ -7,46 +7,47 @@ package khanhbv.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import khanhbv.dlo.BrandBLO;
+import khanhbv.dlo.CategoryBLO;
+import khanhbv.entities.Brand;
+import khanhbv.entities.Category;
+import khanhbv.entities.Product;
 
 /**
  *
  * @author vankhanhbui
  */
-public class DispatcherServlet extends HttpServlet {
+@WebServlet(name = "ShowAddFormServlet", urlPatterns = {"/ShowAddFormServlet"})
+public class ShowAddFormServlet extends HttpServlet {
 
-    private static final String HOME_PRODUCT_SERVLET = "HomeProductServlet";
-    private static final String SEARCH__SERVLET = "SearchServlet";
-    private static final String CHARGE_ELECTRICITY__SERVLET = "ChargeElectricityServlet";
-    private static final String CACULATE_MONEY_SERVLET = "CaculateMoneyServlet";
-    private static final String REMOVE_ITEM_SERVLET = "RemoveItemServlet";
-    private static final String ADD_NEW_PRODUCT_SERVLET = "AddNewProductServlet";
-    private static final String SHOW_FORM_ADD_SERVLET ="ShowAddFormServlet";
+    private static final String ADD_NEW_PRODUCT = "addNewProduct.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = HOME_PRODUCT_SERVLET;
-        try {
-            String action = request.getParameter("btAction");
-            if (action == null) {
 
-            } else if (action.equals("Search")) {
-                url = SEARCH__SERVLET;
-            } else if (action.equals("Add")) {
-                url = CHARGE_ELECTRICITY__SERVLET;
-            }else if(action.equals("Caculate Electric Money")){
-                url = CACULATE_MONEY_SERVLET;
-            }else if(action.equals("Remove")){
-                url = REMOVE_ITEM_SERVLET;
-            }else if(action.equals("Add New Product")){
-                url = SHOW_FORM_ADD_SERVLET;
-            }else if(action.equals("Add New")) {
-                url = ADD_NEW_PRODUCT_SERVLET;
-            }
+        List<Category> listCategory = new ArrayList<>();
+        List<Brand> listBrand = new ArrayList<>();
+        List<Product> listProduct = new ArrayList<>();
+        CategoryBLO categoryBLO = new CategoryBLO();
+        BrandBLO brandBLO = new BrandBLO();
+
+        String url = ADD_NEW_PRODUCT;
+        try {
+
+            //list category db
+            listCategory = categoryBLO.getAllCategory();
+            //list brand db
+            listBrand = brandBLO.getAllBrand();
+            request.setAttribute("LISTCATEGORY", listCategory);
+            request.setAttribute("LISTBRAND", listBrand);
 
         } catch (Exception e) {
             e.printStackTrace();

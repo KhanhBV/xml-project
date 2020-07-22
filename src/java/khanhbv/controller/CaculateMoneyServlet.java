@@ -82,7 +82,7 @@ public class CaculateMoneyServlet extends HttpServlet {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log("CaculateMoney_Servlet: " + e.getMessage() );
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

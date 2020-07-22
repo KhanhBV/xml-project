@@ -55,7 +55,7 @@ public class ChargeElectricityServlet extends HttpServlet {
             session.setAttribute("QUERYSTRING", url);
             
         } catch(Exception e) {
-            e.printStackTrace();
+            log("ChargeElectric_Servlet: " + e.getMessage() );
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

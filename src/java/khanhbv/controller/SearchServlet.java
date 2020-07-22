@@ -60,7 +60,7 @@ public class SearchServlet extends HttpServlet {
             
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log("Search_Servlet: "+ e.getMessage() );
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

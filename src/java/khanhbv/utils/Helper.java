@@ -79,64 +79,7 @@ public class Helper {
                 }
             }
 
-//            if (powerStr.contains(StringConstant.POWER_UNIT_V3)) {
-//                powerStr = powerStr.replace(StringConstant.POWER_UNIT_V3, "").trim();
-//                if (powerStr.matches("\\d+")) {
-//                    result = Float.parseFloat(powerStr);
-//                    result = result / 24;
-//                }
-//            }
-//
-//            if (powerStr.contains(StringConstant.POWER_UNIT_V1)) {
-//                powerStr = powerStr.replace(StringConstant.POWER_UNIT_V1, "").trim();
-//
-//                if (powerStr.matches("\\d+")) {
-//                    result = Float.parseFloat(powerStr);
-//                }
-//
-//            }
-//            if (powerStr.contains(StringConstant.POWER_UNIT_V4)) {
-//                powerStr = powerStr.replace(StringConstant.POWER_UNIT_V4, "").trim();
-//                if (powerStr.matches("\\d+")) {
-//                    result = Float.parseFloat(powerStr);
-//                }
-//            }
-//
-//            if (powerStr.contains(StringConstant.POWER_UNIT_V2)) {
-//                powerStr = powerStr.replace(StringConstant.POWER_UNIT_V2, "").trim();
-//
-//                if (powerStr.matches("\\d+")) {
-//                    result = Float.parseFloat(powerStr);
-//                    result = result / 1000;
-//                }
-//            }
-//
-//            if (powerStr.contains(StringConstant.POWER_UNIT_V6)) {
-//                powerStr = powerStr.replace(StringConstant.POWER_UNIT_V6, "").trim();
-//                if (powerStr.matches("\\d+")) {
-//                    result = Float.parseFloat(powerStr);
-//                }
-//            }
-//
-//            if (powerStr.contains(StringConstant.POWER_UNIT_V5)) {
-//                powerStr = powerStr.replace(StringConstant.POWER_UNIT_V5, "").trim();
-//                if (powerStr.matches("\\d+")) {
-//                    result = Float.parseFloat(powerStr);
-//                    result = result / 1000;
-//                }
-//            }
-//
-//            if (powerStr.contains(StringConstant.POWER_UNIT_V7)) {
-//                powerStr = powerStr.replace(StringConstant.POWER_UNIT_V7, "").trim();
-//                if (powerStr.matches("\\d+")) {
-//                    result = Float.parseFloat(powerStr);
-//                    result = result / 1000;
-//                }
-//            }
-//            NumberFormat numf = NumberFormat.getNumberInstance();
-//            numf.setMaximumFractionDigits(2);
-//            numf.setRoundingMode(RoundingMode.UP);
-//            String resultStr = numf.format(result);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -82,7 +82,7 @@ public class AddNewProductServlet extends HttpServlet {
 
             productBLO.insertProduct(productEntity);
         } catch(Exception e) {
-            e.printStackTrace();
+            log("AddNewProduct_Servlet: " + e.getMessage() );
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

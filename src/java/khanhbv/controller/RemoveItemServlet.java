@@ -45,7 +45,7 @@ public class RemoveItemServlet extends HttpServlet {
             }
             
         } catch (Exception e) {
-            e.printStackTrace();
+            log("RemoveItem_Servlet: " + e.getMessage() );
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

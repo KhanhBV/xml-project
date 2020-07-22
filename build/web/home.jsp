@@ -70,7 +70,7 @@
                                         <c:param name="nameCategory" value="${param.nameCategory}"/>
                                         <c:param name="nameBrand" value="${param.nameBrand}"/>
                                         <c:param name="txtNameSearch" value="${param.txtNameSearch}"/>
-                                      <%--    <c:param name="pageNumber" value="${requestScope.PAGENUMBER}"/>--%>
+                                     
                                     </c:url>
                                     <a href="${URLAdd}">Add</a>
                                 </td>
@@ -88,24 +88,7 @@
             </c:if>
 
             <br/>
-
-            <div class="pagination">
-                <c:set var="url" value="${sessionScope.QUERYSTRING}"/>
-                <c:if test="${not empty result}">
-
-                    <c:forEach var="i" begin="1" end="${requestScope.MAXPAGE}">
-
-                        <c:if test="${requestScope.PAGENUMBER == i}">
-                            <a class="active" href="${url}&pageNumber=${i}">${i}</a>
-                        </c:if>
-                        <c:if test="${requestScope.PAGENUMBER != i}">
-                            <a href="${url}&pageNumber=${i}">${i}</a>
-                        </c:if>
-
-                    </c:forEach>
-
-                </c:if>
-            </div>
+   
         </div>
         <br/>
         <br/>
@@ -175,6 +158,11 @@
                 <br/>
             </c:if>
         </div>
+            <div>
+                <form action="DispatcherServlet">
+                    <input type="submit" value="Crawl Data" name="btAction" />
+                </form>
+            </div>
 
     </body>
 </html>

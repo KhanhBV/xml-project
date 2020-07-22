@@ -50,7 +50,7 @@ public class ShowAddFormServlet extends HttpServlet {
             request.setAttribute("LISTBRAND", listBrand);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log("ShowAddForm_Servlet: " + e.getMessage());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

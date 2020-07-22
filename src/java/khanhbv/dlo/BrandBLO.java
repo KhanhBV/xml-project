@@ -120,6 +120,7 @@ public class BrandBLO implements Serializable {
                 return brand;
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }

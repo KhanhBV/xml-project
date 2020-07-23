@@ -64,7 +64,8 @@ public class HomeProductServlet extends HttpServlet {
 
 
         } catch (Exception e) {
-            log("HomeProduct_Servlet: " + e.getMessage() );
+//            log("HomeProduct_Servlet: " + e.getMessage() );
+e.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

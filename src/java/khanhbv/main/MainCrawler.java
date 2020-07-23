@@ -16,6 +16,9 @@ import khanhbv.crawler.DMGRProductLinkByCategoryCrawler;
 import khanhbv.crawler.DMRCategoryCrawler;
 import khanhbv.crawler.DMRProductDetailCrawler;
 import khanhbv.crawler.DMRProductLinkByCategoryCrawler;
+import khanhbv.crawler.QMCategoryCrawler;
+import khanhbv.crawler.QMProductDetailCrawler;
+import khanhbv.crawler.QMProductLinkByCategoryCrawler;
 import khanhbv.utils.Helper;
 import khanhbv.utils.StringConstant;
 
@@ -62,6 +65,16 @@ public class MainCrawler {
 
 //        CrawlerDMGRService dmgrService = new CrawlerDMGRService();
 //        dmgrService.crawlDMGR();
+
+
+//        QMCategoryCrawler categoryCrawler = new QMCategoryCrawler(null);
+//        categoryCrawler.getCategories(StringConstant.QM_URL_DOMAIN_NAME); 
+
+//        QMProductLinkByCategoryCrawler productLinkByCategoryCrawler = new QMProductLinkByCategoryCrawler(null, "https://quangminh.vn/do-gia-dung/may-phat-dien.html", "Máy phát điện");
+//        productLinkByCategoryCrawler.getProductLink();
+        
+            QMProductDetailCrawler detailCrawler = new QMProductDetailCrawler(null, "May Phat Dien", "https://quangminh.vn/may-phat-dien-honda-eu-20i.html");
+            detailCrawler.getProductDetail();
     }
 
 }

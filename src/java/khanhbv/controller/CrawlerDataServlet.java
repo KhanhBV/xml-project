@@ -38,7 +38,8 @@ public class CrawlerDataServlet extends HttpServlet {
             CrawlerDMGRService dmgrService = new CrawlerDMGRService();
             dmgrService.crawlDMGR();
         } catch (Exception e) {
-            log("CRAWLER_DATA_SERVLET: " + e.getMessage());
+//            log("CRAWLER_DATA_SERVLET: " + e.getMessage());
+e.printStackTrace();
             e.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);

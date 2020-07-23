@@ -23,6 +23,9 @@ public class StringConstant {
     public static final String DMR_URL_DOMAIN_NAME = "https://dienmayre.vn/";
     public static final String PAGE_SYNTAX_DMR = "?page=";
     public static final String PAGE_LAST_SYNTAX_DMR = "&amp;sort=goods_id&amp;order=DESC";
+    
+    //QM page
+    public static final String QM_URL_DOMAIN_NAME = "https://quangminh.vn/";
 
     //Power string
     public static final String POWER_STRING_V1 = "Công suất:";
@@ -46,6 +49,10 @@ public class StringConstant {
     public static final String POWER_STRING_V20 = "Công suất tối đa (W):";
     public static final String POWER_STRING_V21 = "Tổng công suất";
     public static final String POWER_STRING_V22 = "Công suất(W)";
+    public static final String POWER_STRING_V23 = "Công suất liên tục:";
+    public static final String POWER_STRING_V24 = "Công suất cực đại:";
+    
+    
 
 //    
     public static final String FRIDGE_STRING = "TỦ LẠNH";
@@ -72,6 +79,9 @@ public class StringConstant {
     //DMR category
     public static final String DMR_AIR_PURIFIER_STRING = "Máy lọc không khí";
     public static final String DMR_GOOD_EXPERIENCE_STRING = "Kinh Nghiệm Hay";
+    
+    //QM category
+    public static final String QM_GENERATOR_STRING = "Máy phát điện";
 
     //Power 
     public static final String POWER_UNIT_V1 = "KW";

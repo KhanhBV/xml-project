@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/controller/ChargeElectricityServlet.java</file>
             <file>file:/Users/vankhanhbui/Desktop/ProjectXML/web/home.jsp</file>
-            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/controller/CaculateMoneyServlet.java</file>
-            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/dto/ProductCart.java</file>
-            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/dlo/ProductBLO.java</file>
+            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/crawler/DMGRCategoryCrawler.java</file>
+            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/main/MainCrawler.java</file>
+            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/controller/AddNewProductServlet.java</file>
+            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/utils/StringConstant.java</file>
+            <file>file:/Users/vankhanhbui/Desktop/ProjectXML/src/java/khanhbv/crawler/QMCategoryCrawler.java</file>
         </group>
     </open-files>
 </project-private>

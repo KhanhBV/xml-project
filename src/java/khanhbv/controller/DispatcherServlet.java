@@ -24,8 +24,8 @@ public class DispatcherServlet extends HttpServlet {
     private static final String CACULATE_MONEY_SERVLET = "CaculateMoneyServlet";
     private static final String REMOVE_ITEM_SERVLET = "RemoveItemServlet";
     private static final String ADD_NEW_PRODUCT_SERVLET = "AddNewProductServlet";
-    private static final String SHOW_FORM_ADD_SERVLET ="ShowAddFormServlet";
-    private static final String CRAWLER_DATA_SERVLET ="CrawlerDataServlet";
+    private static final String SHOW_FORM_ADD_SERVLET = "ShowAddFormServlet";
+    private static final String CRAWLER_DATA_SERVLET = "CrawlerDataServlet";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,20 +39,21 @@ public class DispatcherServlet extends HttpServlet {
                 url = SEARCH__SERVLET;
             } else if (action.equals("Add")) {
                 url = CHARGE_ELECTRICITY__SERVLET;
-            }else if(action.equals("Caculate Electric Money")){
+            } else if (action.equals("Caculate Electric Money")) {
                 url = CACULATE_MONEY_SERVLET;
-            }else if(action.equals("Remove")){
+            } else if (action.equals("Remove")) {
                 url = REMOVE_ITEM_SERVLET;
-            }else if(action.equals("Add New Product")){
+            } else if (action.equals("Add New Product")) {
                 url = SHOW_FORM_ADD_SERVLET;
-            }else if(action.equals("Add New")) {
+            } else if (action.equals("Add New")) {
                 url = ADD_NEW_PRODUCT_SERVLET;
-            } else if(action.equals("Crawl Data")) {
+            } else if (action.equals("Crawl Data")) {
                 url = CRAWLER_DATA_SERVLET;
             }
 
         } catch (Exception e) {
-            log("Dispatcher_Servlet: " + e.getMessage() );
+//            log("Dispatcher_Servlet: " + e.getMessage() );
+            e.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

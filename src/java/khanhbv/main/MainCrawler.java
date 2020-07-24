@@ -70,11 +70,14 @@ public class MainCrawler {
 //        QMCategoryCrawler categoryCrawler = new QMCategoryCrawler(null);
 //        categoryCrawler.getCategories(StringConstant.QM_URL_DOMAIN_NAME); 
 
-//        QMProductLinkByCategoryCrawler productLinkByCategoryCrawler = new QMProductLinkByCategoryCrawler(null, "https://quangminh.vn/do-gia-dung/may-phat-dien.html", "Máy phát điện");
+//        QMProductLinkByCategoryCrawler productLinkByCategoryCrawler = new QMProductLinkByCategoryCrawler(null, "https://quangminh.vn/do-gia-dung/may-phat-dien/", "Máy phát điện");
 //        productLinkByCategoryCrawler.getProductLink();
         
-            QMProductDetailCrawler detailCrawler = new QMProductDetailCrawler(null, "May Phat Dien", "https://quangminh.vn/may-phat-dien-honda-eu-20i.html");
-            detailCrawler.getProductDetail();
+//            QMProductDetailCrawler detailCrawler = new QMProductDetailCrawler(null, "May Phat Dien", "https://quangminh.vn/may-phat-dien-honda-3800et.html");
+//            detailCrawler.getProductDetail();
+
+        CrawlerQLMService QMCrawlerService = new CrawlerQLMService();
+        QMCrawlerService.crawlCategory();
     }
 
 }

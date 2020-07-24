@@ -68,7 +68,7 @@ public class QMCategoryCrawler extends BaseCrawler {
                 String urlStr = tag.getAttributes().getNamedItem("href").getNodeValue();
                 String categoryStr = tag.getTextContent().trim();
                 if (!urlStr.isEmpty() && !urlStr.isEmpty()) {
-                    categoryMap.put(categoryStr.toUpperCase(), urlStr);
+                    categoryMap.put(categoryStr.toUpperCase(), StringConstant.QM_URL_DOMAIN_NAME + urlStr);
 //                    System.out.println("category: " + categoryStr.toUpperCase());
 //                    System.out.println("url: " + urlStr);
                 }

@@ -26,6 +26,7 @@ public class StringConstant {
     
     //QM page
     public static final String QM_URL_DOMAIN_NAME = "https://quangminh.vn/";
+    public static final String PAGE_SYNTAX_QM = "page/";
 
     //Power string
     public static final String POWER_STRING_V1 = "Công suất:";
@@ -49,8 +50,8 @@ public class StringConstant {
     public static final String POWER_STRING_V20 = "Công suất tối đa (W):";
     public static final String POWER_STRING_V21 = "Tổng công suất";
     public static final String POWER_STRING_V22 = "Công suất(W)";
-    public static final String POWER_STRING_V23 = "Công suất liên tục:";
-    public static final String POWER_STRING_V24 = "Công suất cực đại:";
+    public static final String POWER_STRING_V23 = "Công suất liên tục";
+    public static final String POWER_STRING_V24 = "Công suất cực đại";
     
     
 

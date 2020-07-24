@@ -47,16 +47,17 @@ public class QMProductLinkByCategoryCrawler extends BaseCrawler {
 //                XMLHelper.writeTestFileDocument(document);
                 int maxPage = getLastPage(document);
                 domParserProductLink(document);
-//                
-//                
-//                for (int i = 2; i <= maxPage; i++) {
-//                    String urlPaging = url + StringConstant.PAGE_SYNTAX_DMGR + i;
-//                    getProductLinkInPage(urlPaging);
-//                }//end for maxPage
-//         
-//                for (int i = 0; i < productLinkList.size(); i++) {
-//                    getDetailProduct(productLinkList.get(i), category);
-//                }
+                
+                
+                for (int i = 2; i <= maxPage; i++) {
+                    String urlPaging = url.replace(".html", "/") + StringConstant.PAGE_SYNTAX_QM + i;
+                    getProductLinkInPage(urlPaging);
+                    System.out.println("Page: " + i);
+                }//end for maxPage
+         
+                for (int i = 0; i < productLinkList.size(); i++) {
+                    getDetailProduct(productLinkList.get(i), category);
+                }
 
             }
         } catch (Exception e) {
@@ -124,7 +125,7 @@ public class QMProductLinkByCategoryCrawler extends BaseCrawler {
     }
 
     public void getDetailProduct(String url, String category) {
-       DMGRProductDetailCrawler detailCrawler = new DMGRProductDetailCrawler(null, category, url);
+       QMProductDetailCrawler detailCrawler = new QMProductDetailCrawler(null, category, url);
         detailCrawler.getProductDetail();
     }
 

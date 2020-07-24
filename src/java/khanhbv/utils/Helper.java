@@ -73,7 +73,7 @@ public class Helper {
                 } else if (powerStr.toUpperCase().contains(StringConstant.POWER_UNIT_V2)) {
                     result = result / 1000;
                 } else if (powerStr.toUpperCase().contains(StringConstant.POWER_UNIT_V6)) {
-                    result = (float) (result * 1.25);
+                    result = (float) (result * 0.8);
                 }else {
                     result = 0;
                 }

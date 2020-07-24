@@ -11,10 +11,12 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import khanhbv.dto.ProductTestDTO;
+import khanhbv.utils.Helper;
 import khanhbv.utils.StringConstant;
 import khanhbv.utils.XMLHelper;
 import khanhbv.utils.XMLUtils;
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
 /**
  *
@@ -40,8 +42,8 @@ public class QMProductDetailCrawler extends BaseCrawler {
             if (url != null) {
                 reader = getBufferedReaderForURL(url);
                 String document = XMLHelper.findHTMLToCrawl(reader, beginSyntax, endSyntax);
-                XMLHelper.writeTestFileDocument(document);
-                domParserProductDetails(document);
+//                XMLHelper.writeTestFileDocument(document);
+                dto = domParserProductDetails(document);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -63,24 +65,53 @@ public class QMProductDetailCrawler extends BaseCrawler {
             String exp = "//h2";
             String name = (String) xPath.evaluate(exp, doc, XPathConstants.STRING);
 
-            exp = "//div[@itemprop=\"description\"]/p[not (b)"
-                    + " and (contains(text(),'"
-                    + StringConstant.POWER_STRING_V24
-                    + "'))]";
+            exp = "//div[@itemprop='description']//p[not (b) "
+                    + "and contains(text(),'"
+                    + StringConstant.POWER_STRING_V23
+                    + "')]";
             String power = (String) xPath.evaluate(exp, doc, XPathConstants.STRING);
 
-            if (power == null) {
+            if (power.isEmpty()) {
                 exp = "//div[@itemprop=\"description\"]/p[not (b)"
                         + " and (contains(text(),'"
-                        + StringConstant.POWER_STRING_V23
+                        + StringConstant.POWER_STRING_V24
                         + "'))]";
                 power = (String) xPath.evaluate(exp, doc, XPathConstants.STRING);
+                
+                if (power.isEmpty()) {
+                    exp = "//table//tr[td[contains(text(), '"
+                            + StringConstant.POWER_STRING_V23
+                            + "')]]/td[last()]";
+                    power = (String) xPath.evaluate(exp, doc, XPathConstants.STRING) 
+                            + StringConstant.POWER_UNIT_V6 ;
+                }
             }
 
+            
+
+            exp = "//div[@class='product-image cloud-zoom']/a";
+            Node imageNode = (Node) xPath.evaluate(exp, doc, XPathConstants.NODE);
+            String imgURL = "";
+            if (imageNode != null) {
+                imgURL = imageNode.getAttributes().getNamedItem("href").getNodeValue();
+                
+            }
             System.out.println("name: " + name);
-            System.out.println("power: " + power);
+            System.out.println("url:  " + imgURL);
+
+            System.out.println("Power: " + power);
+            System.out.println("----------------");
+            
+            dto.setCategoryID(category);
+            dto.setImageURL(imgURL);
+            dto.setName(name);
+            dto.setUrl(url);
+            dto.setPower(power);
+            return dto;
+
         }
         return null;
     }
 
+    
 }

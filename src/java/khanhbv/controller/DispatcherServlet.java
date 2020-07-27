@@ -26,6 +26,7 @@ public class DispatcherServlet extends HttpServlet {
     private static final String ADD_NEW_PRODUCT_SERVLET = "AddNewProductServlet";
     private static final String SHOW_FORM_ADD_SERVLET = "ShowAddFormServlet";
     private static final String CRAWLER_DATA_SERVLET = "CrawlerDataServlet";
+    private static final String FIND_GENERATOR_SERVLET = "FindGeneratorServlet";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -49,10 +50,12 @@ public class DispatcherServlet extends HttpServlet {
                 url = ADD_NEW_PRODUCT_SERVLET;
             } else if (action.equals("Crawl Data")) {
                 url = CRAWLER_DATA_SERVLET;
+            } else if (action.equals("Find Generator")) {
+                url = FIND_GENERATOR_SERVLET;
             }
 
         } catch (Exception e) {
-//            log("Dispatcher_Servlet: " + e.getMessage() );
+            log("Dispatcher_Servlet: " + e.getMessage() );
             e.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);

@@ -21,6 +21,7 @@ import khanhbv.dlo.ProductBLO;
 import khanhbv.entities.Brand;
 import khanhbv.entities.Category;
 import khanhbv.entities.Product;
+import khanhbv.utils.StringConstant;
 
 /**
  *
@@ -45,13 +46,16 @@ public class HomeProductServlet extends HttpServlet {
         List<Brand> listBrand = new ArrayList<>();
         try {
             listCategorys = categoryBLO.getAllCategory();
-            listproProducts = productBLO.getAllProduct();
+            listproProducts = productBLO.getElictricalEquipment(StringConstant.QM_GENERATOR_STRING.toUpperCase());
             listBrand = brandBLO.getAllBrand();
             HttpSession session = request.getSession();
             if (listCategorys != null & listproProducts != null) {
                 
-
-                
+                for (int i = 0; i < listCategorys.size(); i++) {
+                    if (listCategorys.get(i).getName().equals(StringConstant.QM_GENERATOR_STRING.toUpperCase())) {
+                        listCategorys.remove(i);
+                    }
+                }
                 session.setAttribute("LISTCATEGORY", listCategorys);
                 session.setAttribute("LISTBRAND", listBrand);
                 

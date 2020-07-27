@@ -70,7 +70,7 @@
                                         <c:param name="nameCategory" value="${param.nameCategory}"/>
                                         <c:param name="nameBrand" value="${param.nameBrand}"/>
                                         <c:param name="txtNameSearch" value="${param.txtNameSearch}"/>
-                                     
+
                                     </c:url>
                                     <a href="${URLAdd}">Add</a>
                                 </td>
@@ -88,7 +88,7 @@
             </c:if>
 
             <br/>
-   
+
         </div>
         <br/>
         <br/>
@@ -136,11 +136,12 @@
                             </c:forEach>
                         </tbody>
                     </table>
-                    <c:set var="money" value="${sessionScope.MONEY}"/>
-                    <c:set var="capa" value="${sessionScope.CAPA}"/>
+                    <c:set var="money" value="${requestScope.MONEY}"/>
+                    <c:set var="capa" value="${requestScope.CAPA}"/>
                     <br/>
                     <input type="Submit" class="button-caculate" value="Caculate Electric Money" name="btAction">
-
+                    
+                    <input type="submit" class="button-find-pin" value="Find Generator" name="btAction" />
                     <c:if test="${not empty capa}">
                         <br>
                         <br>
@@ -158,11 +159,11 @@
                 <br/>
             </c:if>
         </div>
-            <div>
-                <form action="DispatcherServlet">
-                    <input type="submit" value="Crawl Data" name="btAction" />
-                </form>
-            </div>
+        <div>
+            <form action="DispatcherServlet">
+                <input type="submit" value="Crawl Data" name="btAction" />
+            </form>
+        </div>
 
     </body>
 </html>

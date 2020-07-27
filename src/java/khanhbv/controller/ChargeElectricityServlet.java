@@ -52,10 +52,9 @@ public class ChargeElectricityServlet extends HttpServlet {
             
             cart.addItemsToCaculate(idProduct);
             session.setAttribute("CART", cart);
-            session.setAttribute("QUERYSTRING", url);
             
         } catch(Exception e) {
-            log("ChargeElectric_Servlet: " + e.getMessage() );
+            log("ChargeElectric_Servlet: " + e.getMessage());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

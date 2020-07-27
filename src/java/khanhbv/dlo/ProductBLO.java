@@ -214,6 +214,47 @@ public class ProductBLO {
             }
         }
     }
+    public List<Product> getElictricalEquipment(String categoryName) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            String jdql = "SELECT p FROM Product p WHERE p.categoryID != (SELECT c.id FROM Category c WHERE c.name = :name)";
+            Query query = em.createQuery(jdql);
+            query.setParameter("name", categoryName);
+            List<Product> listProduct = new ArrayList<>();
+            listProduct = query.getResultList();
+            return listProduct;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        
+    }
+    
+        public List<Product> getGeneratorByPower(float power, String categoryName) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            String jdql = "SELECT p FROM Product p WHERE p.power >= :power and p.categoryID = (SELECT c.id FROM Category c WHERE c.name = :name)";
+            Query query = em.createQuery(jdql);
+            query.setParameter("power", power);
+            query.setParameter("name", categoryName);
+            
+            List<Product> listProduct = new ArrayList<>();
+            listProduct = query.getResultList();
+            return listProduct;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        
+    }
     
     public List<ProductTestDTO> searchProductByCaAndBrand(String brandName, String categoryName, String nameProduct) {
         EntityManager em = emf.createEntityManager();

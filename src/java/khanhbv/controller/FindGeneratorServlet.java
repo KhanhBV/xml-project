@@ -6,7 +6,8 @@
 package khanhbv.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,75 +15,68 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import khanhbv.dlo.ProductBLO;
 import khanhbv.dto.ProductCart;
 import khanhbv.entities.Product;
+import khanhbv.utils.StringConstant;
 
 /**
  *
  * @author vankhanhbui
  */
-@WebServlet(name = "CaculateMoneyServlet", urlPatterns = {"/CaculateMoneyServlet"})
-public class CaculateMoneyServlet extends HttpServlet {
-
-    private static final String HOME_PAGE = "home.jsp";
-
+@WebServlet(name = "FindGeneratorServlet", urlPatterns = {"/FindGeneratorServlet"})
+public class FindGeneratorServlet extends HttpServlet {
+    
+    private static final String GENERATOR_PAGE = "generator.jsp";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String url = HOME_PAGE;
+        
+        String url = GENERATOR_PAGE;
         try {
             HttpSession session = request.getSession();
             ProductCart cart = (ProductCart) session.getAttribute("CART");
             if (cart == null) {
                 cart = new ProductCart();
             }
+            
             String[] strQuantity = request.getParameterValues("txtQuantity");
             String[] strHour = request.getParameterValues("txtTime");
-
+            
             String idProduct = request.getParameter("idProduct");
-
-            float totalMoney = 0;
-            float usePower = 0;
             float totalPower = 0;
+            float totalPowerOfProduct = 0;
             int quantity = 0;
-            float time = 0;
-            String strCapacity = "";
-            String strTotalMoney = "";
+            
             if (cart != null) {
                 Map<Integer, Product> items = cart.getItems();
-
+                
                 if (items.size() != 0) {
                     int id = Integer.parseInt(idProduct);
-                    float totalPowerOneDay = 0;
                     int count = 0;
+                    
                     for (Map.Entry<Integer, Product> entry : items.entrySet()) {
-
                         String quan = strQuantity[count];
-                        
                         quantity = Integer.parseInt(quan);
-
-                        String hour = strHour[count];
                         
-                        time = Float.parseFloat(hour);
-
                         Product value = entry.getValue();
-                        usePower = (float) (value.getPower() * quantity * time);
-
-                        totalPowerOneDay = totalPowerOneDay + usePower;
+                        totalPowerOfProduct = value.getPower() * quantity;
+                        totalPower = totalPower + totalPowerOfProduct;
                         count++;
+                        
                     }
-                    totalPower = (float) (totalPowerOneDay * 30);
-                    totalMoney = (int) cart.caculateElectric(totalPower);
-                    strTotalMoney = String.format("%.2f", totalMoney);
-                    strCapacity = String.format("%.2f", totalPower);
+                    ProductBLO productBLO = new ProductBLO();
+                    List<Product> listgenerator = new ArrayList<>();
+                    listgenerator = productBLO.getGeneratorByPower(totalPower, StringConstant.QM_GENERATOR_STRING.toUpperCase());
+                    session.setAttribute("LISTGENERATORBYPOWER", listgenerator);
+                    session.setAttribute("TOTALPOWER", totalPower);
                 }
-                request.setAttribute("CAPA", strCapacity);
-                request.setAttribute("MONEY", strTotalMoney);
             }
-
+            
         } catch (Exception e) {
-            log("CaculateMoney_Servlet: " + e.getMessage() );
+//            e.printStackTrace();
+            log("Find Generator Servlet: " + e.getMessage());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import khanhbv.main.CrawlerDMGRService;
 import khanhbv.main.CrawlerDMLService;
+import khanhbv.main.CrawlerQLMService;
 import khanhbv.main.DMRCrawlerService;
 
 /**
@@ -37,10 +38,12 @@ public class CrawlerDataServlet extends HttpServlet {
 
             CrawlerDMGRService dmgrService = new CrawlerDMGRService();
             dmgrService.crawlDMGR();
+
+            CrawlerQLMService QMCrawlerService = new CrawlerQLMService();
+            QMCrawlerService.crawlCategory();
         } catch (Exception e) {
-//            log("CRAWLER_DATA_SERVLET: " + e.getMessage());
-e.printStackTrace();
-            e.printStackTrace();
+            log("CRAWLER_DATA_SERVLET: " + e.getMessage());
+
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

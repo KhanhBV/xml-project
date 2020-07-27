@@ -35,9 +35,7 @@ public class CrawlerQLMService {
     private List<Category> categoryDB;
     private List<Brand> brandDB;
     
-    public void crawlQM() {
-        crawlCategory();
-    }
+  
     
     public void crawlCategory() {
         CategoryBLO categoryBLO = new CategoryBLO();

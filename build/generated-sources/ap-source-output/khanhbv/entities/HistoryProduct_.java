@@ -7,7 +7,7 @@ import khanhbv.entities.History;
 import khanhbv.entities.HistoryProductPK;
 import khanhbv.entities.Product;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-07-23T08:08:44")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-07-27T21:13:26")
 @StaticMetamodel(HistoryProduct.class)
 public class HistoryProduct_ { 
 
